@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
-import GraphData from './data/001.json';
 
 function App() {
     return (

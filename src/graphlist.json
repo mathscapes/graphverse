@@ -3,18 +3,18 @@
         "id": "001",
         "name": "Srishti Organogram",
         "lang": "en",
-        "url": "./data/001.json"
+        "url": "./raw/001.json"
     },
     {
         "id": "002",
         "name": "Fields of Mathematics",
         "lang": "en",
-        "url": "./data/002.json"
+        "url": "./raw/002.json"
     },
     {
         "id": "003",
         "name": "Fields of Mathematics",
         "lang": "en",
-        "url": "./data/003.json"
+        "url": "./raw/003.json"
     }
 ]
