@@ -1,20 +1,8 @@
 [
     {
-        "id": "001",
-        "name": "Srishti Organogram",
+        "id": "collatz-sequence",
+        "name": "Collatz Sequence",
         "lang": "en",
-        "url": "./raw/001.json"
-    },
-    {
-        "id": "002",
-        "name": "Fields of Mathematics",
-        "lang": "en",
-        "url": "./raw/002.json"
-    },
-    {
-        "id": "003",
-        "name": "Fields of Mathematics",
-        "lang": "en",
-        "url": "./raw/003.json"
+        "url": "./raw/collatz-sequence.json"
     }
 ]

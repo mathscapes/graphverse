@@ -8,7 +8,7 @@ const { useMemo, useState, useCallback, useRef } = React;
 
 const extraRenderers = [new CSS2DRenderer()];
 const mat1 = new LineBasicMaterial({ color: "#dcdcdd" });
-const mat2 = new LineBasicMaterial({ color: "#1985A1" });
+const mat2 = new LineBasicMaterial({ color: "#1985A1", opacity: 0.9 });
 
 function map(value, x1, y1, x2, y2) {
     return (value - x1) * (y2 - x2) / (y1 - x1) + x2;
@@ -65,22 +65,58 @@ function setNodeOpacity(cam, node, nodeEl) {
 
 const node_active = (cam, node) => {
     const nodeEl = document.createElement('div');
-    nodeEl.textContent = node.name;
+    if (node.image) {
+        const img = document.createElement('img');
+        img.src = node.image;
+        // img.width = 50;
+        img.height = 50;
+        nodeEl.appendChild(img);
+    }
+    const p = document.createElement('a');
+    p.className = 'label';
+    p.textContent = node.name;
+    nodeEl.appendChild(p);
+
     nodeEl.className = 'node-label active';
     return new CSS2DObject(nodeEl);
 }
 
 const node_default = (cam, node) => {
     const nodeEl = document.createElement('div')
-    nodeEl.textContent = node.name;
+    if (node.image) {
+        const img = document.createElement('img');
+        img.src = node.image;
+        // img.width = 50;
+        img.height = 50;
+        nodeEl.appendChild(img);
+    }
+    const p = document.createElement('a');
+    p.className = 'label';
+    p.textContent = node.name;
+    nodeEl.appendChild(p);
+
     nodeEl.className = 'node-label default';
+
+
     return new CSS2DObject(nodeEl);
 }
 
 const node_dim = (cam, node) => {
     const nodeEl = document.createElement('div');
-    nodeEl.textContent = node.name;
     nodeEl.className = 'node-label';
+
+    if (node.image) {
+        const img = document.createElement('img');
+        img.src = node.image;
+        // img.width = 50;
+        img.height = 50;
+        nodeEl.appendChild(img);
+    }
+    const p = document.createElement('a');
+    p.className = 'label';
+    p.textContent = node.name;
+    nodeEl.appendChild(p);
+
     setNodeOpacity(cam, node, nodeEl);
     return new CSS2DObject(nodeEl);
 }
@@ -102,7 +138,12 @@ class Graph extends React.Component {
         this.resetHighlights = this.resetHighlights.bind(this);
         this.nodeObject = this.nodeObject.bind(this);
         this.linkMaterial = this.linkMaterial.bind(this);
-        this.state = { count: 0 };
+        this.fogValueChanged = this.fogValueChanged.bind(this);
+        this.state = {
+            count: 0,
+            fogValue: 0.0015
+        };
+
     }
 
     resetHighlights() {
@@ -154,7 +195,7 @@ class Graph extends React.Component {
 
     componentDidMount() {
         let Graph = this.ref.current;
-        Graph.scene().fog = new FogExp2(0xffffff, 0.002);
+        Graph.scene().fog = new FogExp2(0xffffff, this.state.fogValue);
         Graph.controls().addEventListener('change', Graph.refresh);
 
     }
@@ -188,10 +229,30 @@ class Graph extends React.Component {
         return;
     }
 
+    fogValueChanged(e) {
+        this.setState({ fogValue: e.target.value });
+        this.ref.current.refresh();
+    }
+
     render() {
 
         return (
             <div className="graph" >
+                {/* <div className="customize" >
+                    <div className="title">
+                        Customize
+                    </div>
+                    <div className="customize-controls">
+                        <div className="control">
+                            <p>Fog distance: {this.state.fogValue}</p>
+                            <input type="range" min="0.0001" max="1" value={this.state.fogValue} step="0.0001" className="slider" onChange={this.fogValueChanged} id="fog" />
+                        </div>
+                        <div className="control">
+                            <p>Fog distance: {this.state.fogValue}</p>
+                            <input type="range" min="0.0001" max="1" value={this.state.fogValue} step="0.0001" className="slider" onChange={this.fogValueChanged} id="fog" />
+                        </div>
+                    </div>
+                </div> */}
                 <ForceGraph3D
                     ref={this.ref}
                     rendererConfig={{ alpha: true }}
@@ -201,8 +262,8 @@ class Graph extends React.Component {
                     graphData={this.props.data}
                     backgroundColor={"rgba(0,0,0,0)"}
                     showNavInfo={false}
-                    linkWidth={0.25}
-                    warmupTicks={500}
+                    linkWidth={0.1}
+                    warmupTicks={100}
                     nodeRelSize={5}
                     nodeResolution={2}
                     nodeOpacity={0}

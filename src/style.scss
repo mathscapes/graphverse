@@ -24,7 +24,7 @@ body {
 }
 .navbar {
     // border-bottom: 1px solid #e5e5e5;
-    background-color: rgba($color-neutral-4,0.5);
+    background-color: rgba($color-neutral-4, 0.5);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -107,9 +107,12 @@ body {
         flex-direction: column;
         align-items: center;
         justify-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         width: 100%;
-    
+        height: 62vh;
+        scroll-behavior: smooth;
+        overflow-y: scroll;
+
         a {
             width: 50%;
             display: flex;
@@ -117,17 +120,27 @@ body {
             justify-items: center;
             justify-content: space-between;
             padding: 0 1rem;
-            border-bottom: 1px solid rgba($color-neutral-2, 0.25);
+            // border-bottom: 1px solid rgba($color-neutral-2, 0.25);
             height: 2rem;
             font-size: $font-size;
             text-decoration: none;
             line-height: 2rem;
             color: $color-neutral-0;
+            transition: 0.3s all;
+        }
+        a:nth-child(odd) {
+            background-color: rgba($color-neutral-5, 1);
+        }
+        a:nth-child(even) {
+            background-color: rgba($color-neutral-4, 0.2);
+        }
+        a:hover {
+            color: $color-neutral-5;
+            background-color: rgba($color-accent, 1);
+            transition: 0.3s all;
         }
     }
 }
-
-
 
 body {
     .graph {
@@ -138,6 +151,16 @@ body {
         width: 100vw;
         min-height: 100vh;
         background-color: $color-neutral-5;
+    }
+    .customize {
+        z-index: 1000;
+        position: absolute;
+        top: 3rem;
+        right: 1rem;
+        padding: 1rem;
+        width: 12vw;
+        background-color: $color-neutral-5;
+        border: 1px solid $color-neutral-4;
     }
     .details {
         position: absolute;
@@ -165,7 +188,7 @@ body {
                 margin-left: 0.5rem;
                 text-transform: uppercase;
                 font-weight: 200;
-                font-size: $font-size * 1.2;
+                font-size: $font-size;
                 border: 1px solid $color-neutral-2;
                 padding: 0.15rem 0.2rem;
             }
@@ -250,25 +273,40 @@ body {
 
 .node-label {
     font-size: $font-size;
-    padding: 0.2em 0.5rem;
-    max-width: 10rem;
-    text-align: center;
-    overflow-wrap: normal;
     color: #16181a;
+    text-align: center;
+
+    .label {
+        padding: 0.2em 0.3rem;
+        max-width: 10rem;
+
+        overflow-wrap: normal;
+
+        // padding: 0.2rem;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.5rem;
     /* transition: 0.1s; */
 }
 
 .node-label.default {
-    font-size: $font-size;
-    color: #1985a1;
-    border: 1px solid #1985a1;
-    background: rgba(255, 255, 255, 1);
+    .label {
+        font-size: $font-size;
+        color: $color-accent;
+        border: 1px solid $color-accent;
+        background: rgba(255, 255, 255, 1);
+    }
 }
 
 .node-label.active {
-    font-size: $font-size;
-    color: #ffffff;
-    background: #1985a1;
+    .label {
+        font-size: $font-size;
+        color: #ffffff;
+        background: $color-accent;
+    }
     z-index: 1000;
 }
 
@@ -291,7 +329,8 @@ canvas {
     height: 100%;
 }
 
-.opacity-50, .dim {
+.opacity-50,
+.dim {
     opacity: 0.5;
 }
 
@@ -299,3 +338,40 @@ canvas {
     display: none;
 }
 
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: $color-neutral-4;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 5px;
+    background: $color-accent;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 5px;
+    background: $color-accent;
+    cursor: pointer;
+}
+
+.control {
+    p {
+        margin: 0.5rem 0;
+    }
+    padding: 0.5rem 0;
+}
