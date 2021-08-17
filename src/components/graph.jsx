@@ -1,14 +1,17 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import ForceGraph3D from 'react-force-graph-3d';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-import { Vector3, LineBasicMaterial, FogExp2 } from 'three';
+import { Vector3, LineBasicMaterial, MeshBasicMaterial, MeshLambertMaterial, FogExp2 } from 'three';
 import { useParams, withRouter } from "react-router-dom";
+import pic from "../img/image.png";
+import Twemoji from 'react-twemoji';
 
-const { useMemo, useState, useCallback, useRef } = React;
+// const { useMemo, useState, useCallback, useRef } = React;
 
 const extraRenderers = [new CSS2DRenderer()];
-const mat1 = new LineBasicMaterial({ color: "#dcdcdd" });
-const mat2 = new LineBasicMaterial({ color: "#1985A1", opacity: 0.9 });
+const mat1 = new LineBasicMaterial({ color: "#c5c3c6" });
+const mat2 = new LineBasicMaterial({ color: "#5c646c" });
 
 function map(value, x1, y1, x2, y2) {
     return (value - x1) * (y2 - x2) / (y1 - x1) + x2;
@@ -63,58 +66,116 @@ function setNodeOpacity(cam, node, nodeEl) {
     nodeEl.style.opacity = op;
 }
 
+function setImageSize(cam, node, nodeEl) {
+    let pos = new Vector3(0, 0, 0);
+
+    if (node.x) {
+        pos = new Vector3(node.x, node.y, node.z);
+    }
+
+    let dist = distanceVector(cam.position, pos);
+
+    let size = map(dist, 500, 0, 50, 200);
+    return size;
+}
+
 const node_active = (cam, node) => {
     const nodeEl = document.createElement('div');
+    const p = document.createElement('p');
+    p.textContent = node.name;
+    if (node.url) {
+        p.textContent += ' ↗️';
+        p.className = 'label url';
+    } else {
+        p.className = 'label';
+    }
+
     if (node.image) {
         const img = document.createElement('img');
         img.src = node.image;
-        // img.width = 50;
-        img.height = 50;
+        img.className = 'image';
+        img.style.height = `5rem`;
         nodeEl.appendChild(img);
     }
-    const p = document.createElement('a');
-    p.className = 'label';
-    p.textContent = node.name;
-    nodeEl.appendChild(p);
+    else if (node.emoji) {
+        // let t = React.createElement(Twemoji, {className:'twemoji', folder:'svg', ext:'.svg' }, node.emoji);
 
+        // let t = <Twemoji emoji={node.emoji} />;
+        // ReactDOM.render(t, nodeEl);
+        let s = document.createElement('span');
+        s.innerText = node.emoji;
+        nodeEl.appendChild(s);
+    }
+    nodeEl.appendChild(p);
     nodeEl.className = 'node-label active';
     return new CSS2DObject(nodeEl);
 }
 
 const node_default = (cam, node) => {
     const nodeEl = document.createElement('div')
+    const p = document.createElement('p');
+    p.textContent = node.name;
+    if (node.url) {
+        p.textContent += ' ↗️';
+        p.className = 'label url';
+    } else {
+        p.className = 'label';
+    }
+
     if (node.image) {
         const img = document.createElement('img');
         img.src = node.image;
-        // img.width = 50;
-        img.height = 50;
+        img.className = 'image';
+        img.style.height = `5rem`;
         nodeEl.appendChild(img);
     }
-    const p = document.createElement('a');
-    p.className = 'label';
-    p.textContent = node.name;
-    nodeEl.appendChild(p);
+    else if (node.emoji) {
+        // let t = React.createElement(Twemoji, {className:'twemoji', folder:'svg', ext:'.svg' }, node.emoji);
+
+        // let t = <Twemoji emoji={node.emoji} />;
+        // ReactDOM.render(t, nodeEl);
+        let s = document.createElement('span');
+        s.innerText = node.emoji;
+        nodeEl.appendChild(s);
+    }
 
     nodeEl.className = 'node-label default';
 
-
+    nodeEl.appendChild(p);
     return new CSS2DObject(nodeEl);
 }
 
 const node_dim = (cam, node) => {
-    const nodeEl = document.createElement('div');
+    let nodeEl = document.createElement('div');
     nodeEl.className = 'node-label';
+
+    const p = document.createElement('p');
+    
+    p.textContent = node.name;
+    if (node.url) {
+        p.textContent += ' ↗️';
+        p.className = 'label url';
+    } else {
+        p.className = 'label';
+    }
 
     if (node.image) {
         const img = document.createElement('img');
         img.src = node.image;
-        // img.width = 50;
-        img.height = 50;
+        img.className = 'image';
+        img.style.height = `5rem`;
         nodeEl.appendChild(img);
     }
-    const p = document.createElement('a');
-    p.className = 'label';
-    p.textContent = node.name;
+    else if (node.emoji) {
+        // let t = React.createElement(Twemoji, {className:'twemoji', folder:'svg', ext:'.svg' }, node.emoji);
+
+        // let t = <Twemoji emoji={node.emoji} />;
+        // ReactDOM.render(t, nodeEl);
+        let s = document.createElement('span');
+        s.innerText = node.emoji;
+        nodeEl.appendChild(s);
+    }
+
     nodeEl.appendChild(p);
 
     setNodeOpacity(cam, node, nodeEl);
@@ -139,9 +200,10 @@ class Graph extends React.Component {
         this.nodeObject = this.nodeObject.bind(this);
         this.linkMaterial = this.linkMaterial.bind(this);
         this.fogValueChanged = this.fogValueChanged.bind(this);
+        this.onNodeRightClick = this.onNodeRightClick.bind(this);
         this.state = {
             count: 0,
-            fogValue: 0.0015
+            fogValue: 0.005
         };
 
     }
@@ -191,6 +253,12 @@ class Graph extends React.Component {
         }
 
         this.setState({ count: this.state.count + 1 });
+    }
+
+    onNodeRightClick(node) {
+        if (node.url) {
+            window.open(node.url, "_blank")
+        }
     }
 
     componentDidMount() {
@@ -262,10 +330,11 @@ class Graph extends React.Component {
                     graphData={this.props.data}
                     backgroundColor={"rgba(0,0,0,0)"}
                     showNavInfo={false}
-                    linkWidth={0.1}
+                    linkWidth={0.25}
                     warmupTicks={100}
                     nodeRelSize={5}
                     nodeResolution={2}
+                    linkResolution={4}
                     nodeOpacity={0}
                     linkMaterial={this.linkMaterial}
                     linkCurvature={0}
@@ -273,6 +342,7 @@ class Graph extends React.Component {
                     nodeThreeObjectExtend={true}
                     onNodeClick={this.onNodeClick}
                     onLinkClick={this.onLinkClick}
+                    onNodeRightClick={this.onNodeRightClick}
                 />
             </div>
         );

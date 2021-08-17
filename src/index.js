@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
+// import Twemoji from 'react-twemoji';
 
 function App() {
     return (
@@ -26,3 +27,4 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 );
+

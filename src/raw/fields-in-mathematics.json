@@ -1,0 +1,68 @@
+{
+    "meta": {
+        "name" : "Fields in Mathematics",
+        "lang"  : "en",
+        "description" : "The Collatz conjecture is a conjecture in mathematics that concerns sequences defined as follows: start with any positive integer n. Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.",
+        "sourceLinks" : [ 
+            { "title": "Collatz Conjecture, Wikipedia", "url": "https://en.wikipedia.org/wiki/Collatz_conjecture" }
+        ],
+        "contributedBy": [
+            "0xf17"
+        ],
+        "dataSource": "#",
+        "editLink": "#"
+    },
+    "data": {
+        "nodes": [
+
+            { "id": 1, "name": "Pure Mathematics", "emoji": "🐚" },
+
+            { "id": 1.1, "name": "Foundation", "emoji": "🗝" },
+            { "id": 1.11, "name": "Proof Theory", "emoji": "✍️" },
+            { "id": 1.12, "name": "Constructive Mathematics", "emoji": "👷‍♀️" },
+            { "id": 1.13, "name": "Model Theory", "emoji": "🔮" },
+            { "id": 1.14, "name": "Set Theory", "emoji": "🧺" },
+
+            { "id": 1.2, "name": "History", "emoji": "⌛️" },
+
+            { "id": 1.3, "name": "Recreational Mathematics", "emoji": "🧩" },
+
+            { "id": 1.4, "name": "Number Theory", "emoji": "🔢" },
+
+            { "id": 1.5, "name": "Algebra", "emoji": "🕸" },
+
+            { "id": 1.6, "name": "Combinatorics", "emoji": "📦" },
+
+            { "id": 1.7, "name": "Geometry", "emoji": "📐" },
+
+            { "id": 1.8, "name": "Topology", "emoji": "🧶" },
+
+            { "id": 1.9, "name": "Analysis", "emoji": "🧐" }
+        ],
+        "links": [
+            { "source": 1, "target": 1.1},
+            { "source": 1.1, "target": 1.11},
+            { "source": 1.1, "target": 1.12},
+            { "source": 1.11, "target": 1.12},
+            { "source": 1.1, "target": 1.13},
+            { "source": 1.1, "target": 1.14},
+
+            { "source": 1, "target": 1.2},
+
+            { "source": 1, "target": 1.3},
+
+            { "source": 1, "target": 1.4},
+
+            { "source": 1, "target": 1.5},
+
+            { "source": 1, "target": 1.6},
+
+            { "source": 1, "target": 1.7},
+
+            { "source": 1, "target": 1.8},
+            
+            { "source": 1, "target": 1.9}
+
+        ]
+    }
+}

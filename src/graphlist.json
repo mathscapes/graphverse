@@ -1,8 +1,8 @@
 [
     {
-        "id": "collatz-sequence",
-        "name": "Collatz Sequence",
+        "id": "fields-in-mathematics",
+        "name": "Fields in Mathematics",
         "lang": "en",
-        "url": "./raw/collatz-sequence.json"
+        "url": "./raw/fields-in-mathematics.json"
     }
 ]
