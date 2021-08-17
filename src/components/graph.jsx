@@ -11,7 +11,7 @@ import Twemoji from 'react-twemoji';
 
 const extraRenderers = [new CSS2DRenderer()];
 const mat1 = new LineBasicMaterial({ color: "#c5c3c6" });
-const mat2 = new LineBasicMaterial({ color: "#5c646c" });
+const mat2 = new LineBasicMaterial({ color: "#969da5" });
 
 function map(value, x1, y1, x2, y2) {
     return (value - x1) * (y2 - x2) / (y1 - x1) + x2;
@@ -62,7 +62,7 @@ function setNodeOpacity(cam, node, nodeEl) {
 
     let dist = distanceVector(cam.position, pos);
 
-    let op = map(dist, 500, 0, 0, 1);
+    let op = map(dist * (1.2), 500, 0, 0, 1);
     nodeEl.style.opacity = op;
 }
 
@@ -150,7 +150,7 @@ const node_dim = (cam, node) => {
     nodeEl.className = 'node-label';
 
     const p = document.createElement('p');
-    
+
     p.textContent = node.name;
     if (node.url) {
         p.textContent += ' ↗️';
@@ -201,9 +201,14 @@ class Graph extends React.Component {
         this.linkMaterial = this.linkMaterial.bind(this);
         this.fogValueChanged = this.fogValueChanged.bind(this);
         this.onNodeRightClick = this.onNodeRightClick.bind(this);
+        this.resumeAnimation = this.resumeAnimation.bind(this);
+        this.toggleAnimationCycle = this.toggleAnimationCycle.bind(this);
+        this.chargeForceChanged = this.chargeForceChanged.bind(this);
         this.state = {
             count: 0,
-            fogValue: 0.005
+            fogValue: 0.003,
+            animationCycle: true,
+            chargeForce: 120
         };
 
     }
@@ -302,25 +307,56 @@ class Graph extends React.Component {
         this.ref.current.refresh();
     }
 
+    resumeAnimation(e) {
+        if (this.ref) {
+            this.ref.current.resumeAnimation();
+        }
+    }
+
+    toggleAnimationCycle(e) {
+        if (this.ref) {
+            if (this.state.animationCycle) {
+                this.ref.current.pauseAnimation();
+                this.setState({ animationCycle: false });
+            }
+            else {
+                this.ref.current.resumeAnimation();
+                this.setState({ animationCycle: true });
+            }
+        }
+    }
+
+    chargeForceChanged(e) {
+        this.setState({ chargeForce: e.target.value });
+        this.ref.current.d3Force("charge", -1 * this.state.chargeForce);
+        this.ref.current.d3ReheatSimulation();
+    }
+
     render() {
 
         return (
             <div className="graph" >
-                {/* <div className="customize" >
+                <div className="customize" >
                     <div className="title">
-                        Customize
+                        <h6>More</h6>
                     </div>
                     <div className="customize-controls">
+                        {/* <div className="control">
+                            <p>Charge force: {this.state.chargeForce}</p>
+                            <input type="range" min="50" max="500" value={this.state.chargeForce} step="1" className="slider" onChange={this.chargeForceChanged} id="chargeForce" />
+                        </div> */}
                         <div className="control">
-                            <p>Fog distance: {this.state.fogValue}</p>
-                            <input type="range" min="0.0001" max="1" value={this.state.fogValue} step="0.0001" className="slider" onChange={this.fogValueChanged} id="fog" />
+                            <p>Nodes: {this.props.data.nodes.length}, Links: {this.props.data.links.length}</p>
                         </div>
                         <div className="control">
-                            <p>Fog distance: {this.state.fogValue}</p>
-                            <input type="range" min="0.0001" max="1" value={this.state.fogValue} step="0.0001" className="slider" onChange={this.fogValueChanged} id="fog" />
+                            <p>Animation Cycle is currrently {this.state.animationCycle ? "active. You may pause to cool down memory usage." : "paused. You can resume to interact with graph."} </p>
+                            <div class="button-group">
+                                <a className= {this.state.animationCycle ?"button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause Animation Cycle" : "Resume Animation Cycle"}</a>
+                            </div>
                         </div>
+
                     </div>
-                </div> */}
+                </div>
                 <ForceGraph3D
                     ref={this.ref}
                     rendererConfig={{ alpha: true }}
@@ -379,9 +415,9 @@ class Details extends React.Component {
                 <ul>{authors}</ul>
                 {/* <div className="spacer"></div> */}
                 <h6>Graph Actions</h6>
-                <div className="actions">
-                    <a className="download" href="{this.props.meta.dataSource}">Download</a>
-                    <a className="edit" href="{this.props.meta.editLink}">Edit on GH</a>
+                <div className="button-group">
+                    <a className="button primary" href="{this.props.meta.dataSource}">Download</a>
+                    <a className="button secondary" href="{this.props.meta.editLink}">Edit on GH</a>
                 </div>
 
             </div>

@@ -2,9 +2,9 @@
     "meta": {
         "name" : "Fields in Mathematics",
         "lang"  : "en",
-        "description" : "The Collatz conjecture is a conjecture in mathematics that concerns sequences defined as follows: start with any positive integer n. Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.",
+        "description" : "Mathematics encompasses a growing variety and depth of subjects over its history, and comprehension of it requires a system to categorize and organize these various subjects into a more general areas of mathematics. A number of different classification schemes have arisen, and though they share some similarities, there are differences due in part to the different purposes they serve.",
         "sourceLinks" : [ 
-            { "title": "Collatz Conjecture, Wikipedia", "url": "https://en.wikipedia.org/wiki/Collatz_conjecture" }
+            { "title": "Areas of Mathematics, Wikipedia", "url": "https://en.wikipedia.org/wiki/Areas_of_mathematics" }
         ],
         "contributedBy": [
             "0xf17"
@@ -18,16 +18,23 @@
             { "id": 1, "name": "Pure Mathematics", "emoji": "🐚" },
 
             { "id": 1.1, "name": "Foundation", "emoji": "🗝" },
-            { "id": 1.11, "name": "Proof Theory", "emoji": "✍️" },
-            { "id": 1.12, "name": "Constructive Mathematics", "emoji": "👷‍♀️" },
-            { "id": 1.13, "name": "Model Theory", "emoji": "🔮" },
-            { "id": 1.14, "name": "Set Theory", "emoji": "🧺" },
+            { "id": 1.11, "name": "Proof Theory" },
+            { "id": 1.12, "name": "Constructive Mathematics" },
+            { "id": 1.13, "name": "Model Theory" },
+            { "id": 1.14, "name": "Set Theory" },
 
-            { "id": 1.2, "name": "History", "emoji": "⌛️" },
+            { "id": 1.2, "name": "History" },
 
-            { "id": 1.3, "name": "Recreational Mathematics", "emoji": "🧩" },
+            { "id": 1.3, "name": "Recreational Mathematics" },
 
-            { "id": 1.4, "name": "Number Theory", "emoji": "🔢" },
+            { "id": 1.4, "name": "Number Theory" },
+            { "id": 1.41, "name": "Arithmetic" },
+            { "id": 1.42, "name": "Analytic N.Th" },
+            { "id": 1.43, "name": "Algebraic N.Th" },
+            { "id": 1.44, "name": "Geometric N.Th" },
+            { "id": 1.45, "name": "Combinatorial N.Th" },
+            { "id": 1.46, "name": "Transcendental N.Th" },
+            { "id": 1.47, "name": "Computational N.Th" },
 
             { "id": 1.5, "name": "Algebra", "emoji": "🕸" },
 
@@ -52,6 +59,16 @@
             { "source": 1, "target": 1.3},
 
             { "source": 1, "target": 1.4},
+            { "source": 1.4, "target": 1.41},
+            { "source": 1.4, "target": 1.42},
+            { "source": 1.4, "target": 1.43},
+            { "source": 1.43, "target": 1.5},
+            { "source": 1.4, "target": 1.44},
+            { "source": 1.44, "target": 1.7},
+            { "source": 1.4, "target": 1.45},
+            { "source": 1.45, "target": 1.6},
+            { "source": 1.4, "target": 1.46},
+            { "source": 1.4, "target": 1.47},
 
             { "source": 1, "target": 1.5},
 
