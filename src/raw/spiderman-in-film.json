@@ -1,0 +1,31 @@
+{
+    "meta": {
+        "name" : "Spiderman in film",
+        "lang"  : "en",
+        "description" : "Lorem ipsum",
+        "sourceLinks" : [ 
+            { "title": "Empty", "url": "#" }
+        ],
+        "contributedBy": [
+            "0xf17"
+        ],
+        "dataSource": "#",
+        "editLink": "#"
+    },
+    "data": {
+        "nodes": [
+            { "id": 1, "name": "Early Television films" },
+            { "id": 2, "name": "Sam Raimi" },
+            { "id": 3, "name": "Marc Webb" },
+            { "id": 4, "name": "Peter Jackson" },
+            { "id": 1.1, "name": "The Amazing Spider-Man series (1977-1981)" },
+            { "id": 1.11, "name": "Spider-Man (1977)", "image": "https://upload.wikimedia.org/wikipedia/en/9/93/Poster_of_The_Amazing_Spider-Man.jpg" },
+            { "id": 1.12, "name": "Spider-Man Strikes Back (1978)", "image": "https://upload.wikimedia.org/wikipedia/en/4/49/Poster_of_Spider-Man_Strikes_Back.jpg" }
+        ],
+        "links": [
+            { "source": 1, "target": 1.1 },
+            { "source": 1.1, "target": 1.11},
+            { "source": 1.1, "target": 1.12}
+        ]
+    }
+}

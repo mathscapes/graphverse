@@ -15,6 +15,8 @@
     "data": {
         "nodes": [
 
+            { "id": 0, "name": "Mathematics" },
+
             { "id": 1, "name": "Pure Mathematics", "emoji": "🐚" },
 
             { "id": 1.1, "name": "Foundation", "emoji": "🗝" },
@@ -37,16 +39,53 @@
             { "id": 1.47, "name": "Computational N.Th" },
 
             { "id": 1.5, "name": "Algebra", "emoji": "🕸" },
+            { "id": 1.51, "name": "Order Theory" },
+            { "id": 1.52, "name": "General Algebraic Systems" },
+            { "id": 1.53, "name": "Field Theory" },
+            { "id": 1.54, "name": "Ring Theory" },
 
             { "id": 1.6, "name": "Combinatorics", "emoji": "📦" },
 
             { "id": 1.7, "name": "Geometry", "emoji": "📐" },
+            { "id": 1.71, "name": "Convex Geometry" },
+            { "id": 1.72, "name": "Discrete Geometry" },
+            { "id": 1.73, "name": "Differential Geometry" },
+            { "id": 1.74, "name": "Algebraic Geometry" },
+            { "id": 1.75, "name": "Arithmetic Geometry" },
+            { "id": 1.76, "name": "Diophantine Geometry" },
 
             { "id": 1.8, "name": "Topology", "emoji": "🧶" },
+            { "id": 1.81, "name": "General Topology" },
+            { "id": 1.82, "name": "Algebraic Topology" },
+            { "id": 1.83, "name": "Differential Topology" },
 
-            { "id": 1.9, "name": "Analysis", "emoji": "🧐" }
+            { "id": 1.9, "name": "Analysis", "emoji": "🧐" },
+
+            { "id": 2, "name": "Applied Mathematics" },
+
+            { "id": 2.1, "name": "Probability and Statistics" },
+            { "id": 2.11, "name": "Probability Theory" },
+            { "id": 2.111, "name": "Stochastic Processes" },
+            { "id": 2.12, "name": "Statistics" },
+
+            { "id": 2.2, "name": "Computational Sciences" },
+            { "id": 2.21, "name": "Numerical Analysis" },
+            { "id": 2.22, "name": "Computer Algebra" },
+
+            { "id": 2.3, "name": "Mathematical Physics" },
+            { "id": 2.31, "name": "Classical Mechanics" },
+            { "id": 2.32, "name": "Mechanics of Structures" },
+            { "id": 2.33, "name": "Mechanics of Deformable Solids" },
+            { "id": 2.34, "name": "Fluid Mechanics" },
+            { "id": 2.35, "name": "Particle Mechanics" },
+
+            { "id": 2.4, "name": "Operations Research" },
+            { "id": 2.5, "name": "Mathematical Programming" }
+
         ],
         "links": [
+            { "source": 0, "target": 1},
+            { "source": 0, "target": 2},
             { "source": 1, "target": 1.1},
             { "source": 1.1, "target": 1.11},
             { "source": 1.1, "target": 1.12},
@@ -71,15 +110,47 @@
             { "source": 1.4, "target": 1.47},
 
             { "source": 1, "target": 1.5},
+            { "source": 1.5, "target": 1.51},
+            { "source": 1.5, "target": 1.52},
+            { "source": 1.5, "target": 1.53},
+            { "source": 1.5, "target": 1.54},
 
             { "source": 1, "target": 1.6},
 
             { "source": 1, "target": 1.7},
+            { "source": 1.7, "target": 1.71},
+            { "source": 1.7, "target": 1.72},
+            { "source": 1.7, "target": 1.73},
+            { "source": 1.7, "target": 1.74},
+            { "source": 1.7, "target": 1.75},
+            { "source": 1.7, "target": 1.76},
 
             { "source": 1, "target": 1.8},
+            { "source": 1.8, "target": 1.81},
+            { "source": 1.8, "target": 1.82},
+            { "source": 1.8, "target": 1.83},
             
-            { "source": 1, "target": 1.9}
+            { "source": 1, "target": 1.9},
 
+            { "source": 2, "target": 2.1},
+            { "source": 2.1, "target": 2.11},
+            { "source": 2.11, "target": 2.111},
+            { "source": 2.1, "target": 2.12},
+
+            { "source": 2, "target": 2.2},
+            { "source": 2.2, "target": 2.21},
+            { "source": 2.2, "target": 2.22},
+
+            { "source": 2, "target": 2.3},
+            { "source": 2.3, "target": 2.31},
+            { "source": 2.3, "target": 2.32},
+            { "source": 2.3, "target": 2.33},
+            { "source": 2.3, "target": 2.34},
+            { "source": 2.3, "target": 2.35},
+
+            { "source": 2, "target": 2.4},
+
+            { "source": 2, "target": 2.5}
         ]
     }
 }

@@ -1,0 +1,24 @@
+{
+    "meta": {
+        "name" : "Empty",
+        "lang"  : "en",
+        "description" : "Lorem ipsum",
+        "sourceLinks" : [ 
+            { "title": "Empty", "url": "#" }
+        ],
+        "contributedBy": [
+            "0xf17"
+        ],
+        "dataSource": "#",
+        "editLink": "#"
+    },
+    "data": {
+        "nodes": [
+            { "id": 0, "name": "A" },
+            { "id": 1, "name": "B" }
+        ],
+        "links": [
+            { "source": 0, "target": 1 }
+        ]
+    }
+}

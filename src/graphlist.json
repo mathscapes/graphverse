@@ -4,5 +4,29 @@
         "name": "Fields in Mathematics",
         "lang": "en",
         "url": "./raw/fields-in-mathematics.json"
+    },
+    {
+        "id": "srishti-organogram",
+        "name": "Srishti Organogram",
+        "lang": "en",
+        "url": "./raw/srishti-organogram.json"
+    },
+    {
+        "id": "software-design-patterns",
+        "name": "Software Design Patterns",
+        "lang": "en",
+        "url": "./raw/software-design-patterns.json"
+    },
+    {
+        "id": "design-studios-in-india",
+        "name": "Design Studios in India",
+        "lang": "en",
+        "url": "./raw/design-studios-in-india.json"
+    },
+    {
+        "id": "spiderman-in-film",
+        "name": "Spiderman in film",
+        "lang": "en",
+        "url": "./raw/spiderman-in-film.json"
     }
 ]
