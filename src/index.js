@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
-import ReactGA from 'react-ga';
+import GA4React from 'ga-4-react';
 // import Twemoji from 'react-twemoji';
 
 function App() {
-    ReactGA.initialize('UA-121879456-1');
-    ReactGA.pageview(window.location.pathname + window.location.search);
-    
+    // const ga4react = new GA4React('G-QX826LQMSL');
+    // ga4react.initialize();
+    // ReactGA.pageview(window.location.pathname + window.location.search);
+
     return (
         <div className="App">
             <Router>
@@ -31,6 +32,13 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 );
+
+try {
+    setTimeout(_ => {
+        const ga4react = new GA4React("G-QX826LQMSL");
+        ga4react.initialize();
+    }, 4000);
+} catch (err) { }
 
 
 
