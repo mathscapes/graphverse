@@ -4,7 +4,7 @@
         "lang"  : "en",
         "description" : "Lorem ipsum",
         "sourceLinks" : [ 
-            { "title": "Empty", "url": "#" }
+            { "title": "Empty", "url": "#" } 
         ],
         "contributedBy": [
             "0xf17"

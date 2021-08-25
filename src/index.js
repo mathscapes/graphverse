@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-8ZZD995QBV');
 // import Twemoji from 'react-twemoji';
 
 function App() {
