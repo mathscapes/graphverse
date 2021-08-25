@@ -5,7 +5,6 @@ import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
 import ReactGA from 'react-ga';
-ReactGA.initialize('G-8ZZD995QBV');
 // import Twemoji from 'react-twemoji';
 
 function App() {
@@ -29,4 +28,7 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 );
+
+ReactGA.initialize('G-8ZZD995QBV');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
