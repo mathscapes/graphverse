@@ -18,7 +18,6 @@ import { Helmet } from 'react-helmet';
 // `;
 
 function App() {
-    document.title = "Graphverse";
     return (
         <div className="App">
             <Router>

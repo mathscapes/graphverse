@@ -351,7 +351,7 @@ class Graph extends React.Component {
                         <div className="control">
                             <p>Animation Cycle is currrently {this.state.animationCycle ? "active. You may pause to cool down memory usage." : "paused. You can resume to interact with graph."} </p>
                             <div class="button-group">
-                                <a className= {this.state.animationCycle ?"button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause Animation Cycle" : "Resume Animation Cycle"}</a>
+                                <a className={this.state.animationCycle ? "button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause Animation Cycle" : "Resume Animation Cycle"}</a>
                             </div>
                         </div>
 
@@ -394,6 +394,7 @@ class Details extends React.Component {
     render() {
         var sourceLinks = "", authors = "";
         if (this.props.meta !== null) {
+            document.title = "Graphverse | " + this.props.meta.name;
             sourceLinks = this.props.meta.sourceLinks.map((source) =>
                 <li key={source.url}><a href={source.url}>{source.title}</a></li>
             );
