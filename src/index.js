@@ -4,16 +4,26 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
-import GA4React from 'ga-4-react';
-// import Twemoji from 'react-twemoji';
+import { Helmet } from 'react-helmet';
+
+const head = `
+    <meta charSet="utf-8" />
+    <title>My Title</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX826LQMSL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-QX826LQMSL');
+    </script>
+`;
 
 function App() {
-    // const ga4react = new GA4React('G-QX826LQMSL');
-    // ga4react.initialize();
-    // ReactGA.pageview(window.location.pathname + window.location.search);
-
     return (
         <div className="App">
+            <Helmet>
+                {head}
+            </Helmet>
             <Router>
                 <Nav />
                 <Switch>
@@ -32,13 +42,6 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 );
-
-try {
-    setTimeout(_ => {
-        const ga4react = new GA4React("G-QX826LQMSL");
-        ga4react.initialize();
-    }, 4000);
-} catch (err) { }
 
 
 
