@@ -6,24 +6,21 @@ import "./style.scss";
 import GraphList from './graphlist.json';
 import { Helmet } from 'react-helmet';
 
-const head = `
-    <meta charSet="utf-8" />
-    <title>My Title</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX826LQMSL"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-QX826LQMSL');
-    </script>
-`;
+// const head = `
+//     <meta charSet="utf-8" />
+//     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX826LQMSL"></script>
+//     <script>
+//         window.dataLayer = window.dataLayer || [];
+//         function gtag(){ dataLayer.push(arguments); }
+//         gtag('js', new Date());
+//         gtag('config', 'G-QX826LQMSL');
+//     </script>
+// `;
 
 function App() {
+    document.title = "Graphverse";
     return (
         <div className="App">
-            <Helmet>
-                {head}
-            </Helmet>
             <Router>
                 <Nav />
                 <Switch>
