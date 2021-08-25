@@ -8,7 +8,7 @@ import ReactGA from 'react-ga';
 // import Twemoji from 'react-twemoji';
 
 function App() {
-    ReactGA.initialize('G-8ZZD995QBV');
+    ReactGA.initialize('UA-121879456-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
     
     return (
