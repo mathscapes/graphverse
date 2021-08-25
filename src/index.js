@@ -8,6 +8,9 @@ import ReactGA from 'react-ga';
 // import Twemoji from 'react-twemoji';
 
 function App() {
+    ReactGA.initialize('G-8ZZD995QBV');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+    
     return (
         <div className="App">
             <Router>
@@ -16,7 +19,7 @@ function App() {
                     <Route exact path="/" component={() => <Search items={GraphList} />} />
                     <Route exact path="/search" component={() => <Search items={GraphList} />} />
                     <Route exact path="/about" component={() => <About data="data" />} />
-                    <Route path="/graph/:id" component={() => <Graph/>} />
+                    <Route path="/graph/:id" component={() => <Graph />} />
                 </Switch>
             </Router>
             <Footer />
@@ -29,6 +32,5 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-ReactGA.initialize('G-8ZZD995QBV');
-ReactGA.pageview(window.location.pathname + window.location.search);
+
 
