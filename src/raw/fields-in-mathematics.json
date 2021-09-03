@@ -1,7 +1,7 @@
 {
     "meta": {
         "name" : "Fields in Mathematics",
-        "lang"  : "en",
+        "tags"  : [ "en" ],
         "description" : "Mathematics encompasses a growing variety and depth of subjects over its history, and comprehension of it requires a system to categorize and organize these various subjects into a more general areas of mathematics. A number of different classification schemes have arisen, and though they share some similarities, there are differences due in part to the different purposes they serve.",
         "sourceLinks" : [ 
             { "title": "Areas of Mathematics, Wikipedia", "url": "https://en.wikipedia.org/wiki/Areas_of_mathematics" }
@@ -19,7 +19,7 @@
 
             { "id": 1, "name": "Pure Mathematics", "emoji": "🐚" },
 
-            { "id": 1.1, "name": "Foundation", "emoji": "🗝" },
+            { "id": 1.1, "name": "Foundation", "emoji": "🗝", "group": 5},
             { "id": 1.11, "name": "Proof Theory" },
             { "id": 1.12, "name": "Constructive Mathematics" },
             { "id": 1.13, "name": "Model Theory" },

@@ -1,7 +1,7 @@
 {
     "meta": {
         "name" : "Design Studios in India",
-        "lang"  : "en",
+        "tags"  : [ "en" ],
         "description" : "Lorem ipsum",
         "sourceLinks" : [ 
             { "title": "Empty", "url": "#" }

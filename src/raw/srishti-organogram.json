@@ -1,7 +1,7 @@
 {
     "meta": {
         "name" : "Srishti Organogram",
-        "lang"  : "en",
+        "tags"  : [ "en" ],
         "description" : "Srishti Manipal Institute of Art, Design and Technology, formerly known as Srishti Institute of Art, Design & Technology (Srishti), is a multi-disciplinary approach design school established in 1996 by Geeta Narayanan under the Ujwal Trust in Bangalore, India. It offers design education in Digital Video Production, Film, Visual Communication, Experimental Media Arts, Design in Education, Textile Design, Animation and Visual Effects, Interaction Design, Product and Interface Design, Furniture and Spatial Design, and Business Systems and Design. As of April 2020, Srishti is a part of Manipal Academy of Higher Education (MAHE) and will be shifted to the Yelahanka campus.",
         "sourceLinks" : [ 
             { "title": "Srishti's Official Website", "url": "http://www.srishtimanipalinstitute.in/" },
@@ -43,12 +43,12 @@
             { "id": 4.22, "name": "UGVP" },
             { "id": 4.23, "name": "UGPP" },
             { "id": 4.24, "name": "PG" },
-            { "id": 4.25, "name": "Doc." },
+            { "id": 4.25, "name": "Doctoral" },
 
             { "id": 4.211, "name": "Wellness" },
             { "id": 4.212, "name": "Support" },
 
-            { "id": 4.26, "name": "Research & Collaboration" },
+            { "id": 4.26, "name": "Research & Collaboration", "emoji": "🔬" },
             { "id": 4.27, "name": "Centers & Labs" },
 
             { "id": 5.1, "name": "Fields of Practice" },

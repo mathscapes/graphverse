@@ -26,7 +26,13 @@ function Search(props) {
                 <div className="results">
                     {
                         props.items.map(graph => (
-                            <Link key={graph.id} className="graph-link" to={"/graph/" + graph.id}>{graph.name} <span>{graph.lang}</span></Link>
+                            <Link key={graph.id} className="graph-link" to={"/graph/" + graph.id}>{graph.name}
+                                <div>
+                                    {graph.tags.map((value, index) => {
+                                        return <span key={index}>{value}</span>
+                                    })}
+                                </div>
+                            </Link>
                         ))
                     }
                 </div>

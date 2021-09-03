@@ -2,31 +2,55 @@
     {
         "id": "fields-in-mathematics",
         "name": "Fields in Mathematics",
-        "lang": "en",
+        "tags": ["en","case study"],
         "url": "./raw/fields-in-mathematics.json"
     },
     {
         "id": "srishti-organogram",
         "name": "Srishti Organogram",
-        "lang": "en",
+        "tags": ["en","case study"],
         "url": "./raw/srishti-organogram.json"
     },
     {
         "id": "software-design-patterns",
         "name": "Software Design Patterns",
-        "lang": "en",
+        "tags": ["en","case study"],
         "url": "./raw/software-design-patterns.json"
     },
     {
         "id": "design-studios-in-india",
         "name": "Design Studios in India",
-        "lang": "en",
+        "tags": ["en","case study"],
         "url": "./raw/design-studios-in-india.json"
     },
     {
         "id": "spiderman-in-film",
         "name": "Spiderman in film",
-        "lang": "en",
+        "tags": ["en","case study"],
         "url": "./raw/spiderman-in-film.json"
+    },
+    {
+        "id": "hindi-grammar",
+        "name": "हिंदी व्याकरण",
+        "tags": ["hi","case study"],
+        "url": "./raw/hindi-grammar.json"
+    },
+    {
+        "id": "namma-metro-rail-system-bengaluru-stations",
+        "name": "Namma Metro Rail System, Bengaluru - Stations",
+        "tags": ["en","case study"],
+        "url": "./raw/namma-metro-rail-system-bengaluru-stations.json"
+    },
+    {
+        "id": "graphverse-group-coloring",
+        "name": "Graphverse Group Coloring",
+        "tags": ["en","case study"],
+        "url": "./raw/graphverse-group-coloring.json"
+    },
+    {
+        "id": "maths-lab-srishti-2021",
+        "name": "Maths Lab at Srishti (2021)",
+        "tags": ["en","case study"],
+        "url": "./raw/maths-lab-srishti-2021.json"
     }
 ]

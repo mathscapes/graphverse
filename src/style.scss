@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Chivo:wght@100;200;400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
 
 $font-family: "Chivo", sans-serif;
 $font-size: 0.8rem;
@@ -27,17 +28,28 @@ body {
     font-family: $font-family;
     font-size: $font-size;
 }
+
+h1,h2 {
+    letter-spacing: -0.5px;
+}
+
 .navbar {
     // border-bottom: 1px solid #e5e5e5;
-    background-color: rgba($color-neutral-4, 0.5);
+    background-color: rgba($color-neutral-5, 0.8);
+    border-bottom: 1px solid $color-neutral-4;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-items: center;
+    justify-content: center;
     height: 2rem;
     padding: 0 1rem;
     // text-transform: uppercase;
     font-size: $font-size;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     // letter-spacing: 0.5px;
     .container {
         width: 100%;
@@ -59,6 +71,11 @@ body {
                 a {
                     color: $color-neutral-0;
                     text-decoration: none;
+                    transition: 0.2s opacity;
+                }
+                a:hover {
+                    opacity: 0.5;
+                    transition: 0.2s opacity;
                 }
             }
         }
@@ -92,7 +109,7 @@ body {
         padding: 0 1rem;
         border-bottom: 1px solid rgba($color-neutral-2, 0.75);
 
-        width: 50%;
+        min-width: 50vw;
         height: 2rem;
     }
 
@@ -113,7 +130,7 @@ body {
         align-items: center;
         justify-items: center;
         justify-content: flex-start;
-        width: 100%;
+        min-width: 100vw;
         height: 62vh;
         scroll-behavior: smooth;
         overflow-y: scroll;
@@ -124,6 +141,7 @@ body {
             align-content: center;
             justify-items: center;
             justify-content: space-between;
+            align-items: center;
             padding: 0 1rem;
             // border-bottom: 1px solid rgba($color-neutral-2, 0.25);
             height: 2rem;
@@ -132,6 +150,18 @@ body {
             line-height: 2rem;
             color: $color-neutral-0;
             transition: 0.3s all;
+
+            span {
+                text-transform: uppercase;
+                height: 1.2rem;
+                line-height: 1.2rem;
+                // border:1px solid $color-neutral-3;
+                color: $color-neutral-2;
+                background-color: rgba($color-neutral-4, 0.5);
+                padding: 0.15rem 0.4rem;
+                margin-left: 0.3rem;
+                // border-radius: 0.6rem;
+            }
         }
         a:nth-child(odd) {
             background-color: rgba($color-neutral-5, 1);
@@ -143,6 +173,11 @@ body {
             color: $color-neutral-5;
             background-color: rgba($color-accent, 1);
             transition: 0.3s all;
+            span {
+                color: $color-accent;
+                background-color: rgba($color-neutral-5, 1);
+                // border: 1px solid $color-neutral-5;
+            }
         }
     }
 }
@@ -164,7 +199,7 @@ body {
         right: 1rem;
         padding: 1rem;
         width: 14rem;
-        background-color: rgba($color-neutral-4,0.65);
+        background-color: rgba($color-neutral-4, 0.65);
         // border: 1px solid $color-neutral-4;
         display: flex;
         flex-direction: column;
@@ -198,8 +233,10 @@ body {
         overflow-y: scroll;
         border-right: 1px solid $color-neutral-4;
         h1 {
-            font-size: $font-size * 1.2;
+            font-size: $font-size * 1.6;
+            line-height: 1.4;
             margin-top: 0;
+            margin-bottom: 0rem;
             color: $color-neutral-0;
             span {
                 color: $color-neutral-2;
@@ -214,6 +251,7 @@ body {
         p {
             line-height: 1.4;
             font-size: $font-size;
+            font-family: 'Montaga', serif;
             color: $color-neutral-1;
         }
         ul {
@@ -271,15 +309,36 @@ h6 {
     font-size: $font-size;
     color: #16181a;
     text-align: center;
+    max-width: 10vw;
 
-    .label {
-        padding: 0.4em 0.5rem;
+    .label-container {
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.5rem;
+        align-items: center;
+        
+        padding: 0.2em 0.8rem;
         // max-width: 10rem;
         overflow-wrap: normal;
         margin: 0;
+        height: 2rem;
         border-radius: $corner-radius;
-        background-color: rgba($color-neutral-5, 0.8);
+        background-color: rgba($color-neutral-5, 1);
+
+        p {
+            margin:0;
+        }
     }
+
+
+    // .label {
+    //     padding: 0.4em 0.5rem;
+    //     // max-width: 10rem;
+    //     overflow-wrap: normal;
+    //     margin: 0;
+    //     border-radius: $corner-radius;
+    //     background-color: rgba($color-neutral-5, 1);
+    // }
 
     .url {
         border-bottom: 1px solid $color-neutral-3;
@@ -307,12 +366,18 @@ h6 {
 }
 
 .node-label.default {
-    .label {
+    .label-container {
         font-size: $font-size;
         color: $color-neutral-5;
         // border: 1px solid $color-neutral-0;
         background: rgba($color-neutral-2, 0.8);
     }
+    // .label {
+    //     font-size: $font-size;
+    //     color: $color-neutral-5;
+    //     // border: 1px solid $color-neutral-0;
+    //     background: rgba($color-neutral-2, 0.8);
+    // }
     .url {
         border: 0px solid $color-accent;
     }
@@ -325,11 +390,18 @@ h6 {
 }
 
 .node-label.active {
-    .label {
+    .label-container{
         font-size: $font-size;
         color: #ffffff;
         background: $color-neutral-0;
+
+        
     }
+    // .label {
+    //     font-size: $font-size;
+    //     color: #ffffff;
+    //     background: $color-neutral-0;
+    // }
     .url {
         border: 0px solid $color-accent;
     }
@@ -342,7 +414,7 @@ h6 {
 }
 
 .logo img {
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     right: 2rem;
     width: 120px;
@@ -454,4 +526,84 @@ a.button.secondary {
 a.button:hover {
     opacity: 0.5;
     transition: 0.2s all;
+}
+
+.about {
+    max-width: 800px;
+    margin: 5vw auto;
+    padding: 2rem;
+
+    h1 {
+        font-weight: 200;
+        color:$color-neutral-0;
+    }
+
+    h1.large {
+        letter-spacing: -1px;
+        font-size: 2rem;
+        font-weight: 100;
+        color: $color-neutral-0;
+        b {
+            font-weight: 600;
+        }
+        a {
+            color: $color-neutral-0;
+        }
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 3rem;
+        line-height: 1.1;
+        
+    }
+
+    h3 {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    h4 {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+        color: $color-accent;
+    }
+
+    p {
+        font-family: 'Montaga', serif;
+        font-size: 1.2rem;
+        line-height: 1.4;
+        color: $color-neutral-1;
+    }
+
+    table {
+        tr {
+            td {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    ul {
+        li {
+            font-family: 'Montaga', serif;
+            font-size: 1.1rem;
+        }
+    }
+    .footer {
+        margin-top: 5rem;
+        h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        opacity: 0.5;
+    }
+}
+
+.modal {
+    background-color: rgba($color-neutral-0, 0.8);
+    // position: absolute;
+    // top:10rem;
+    padding: 1rem;
 }

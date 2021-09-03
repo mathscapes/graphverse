@@ -1,7 +1,7 @@
 {
     "meta": {
         "name" : "Empty",
-        "lang"  : "en",
+        "tags"  : [ "en" ],
         "description" : "Lorem ipsum",
         "sourceLinks" : [ 
             { "title": "Empty", "url": "#" }

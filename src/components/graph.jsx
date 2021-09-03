@@ -2,12 +2,114 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ForceGraph3D from 'react-force-graph-3d';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-import { Vector3, LineBasicMaterial, MeshBasicMaterial, MeshLambertMaterial, FogExp2 } from 'three';
+import { Vector3, LineBasicMaterial, AxesHelper, MeshBasicMaterial, MeshLambertMaterial, FogExp2 } from 'three';
+import * as THREE from 'three';
 import { useParams, withRouter } from "react-router-dom";
 import pic from "../img/image.png";
 import Twemoji from 'react-twemoji';
 
 // const { useMemo, useState, useCallback, useRef } = React;
+
+const colors = [
+    'rgba(26, 27, 32, 1)',
+    'rgba(42, 61, 58, 1)',
+    'rgba(44, 59, 87, 1)',
+    'rgba(57, 62, 70, 1)',
+    'rgba(57, 87, 162, 1)',
+    'rgba(59, 51, 47, 1)',
+    'rgba(62, 120, 106, 1)',
+    'rgba(66, 62, 106, 1)',
+    'rgba(67, 135, 211, 1)',
+    'rgba(72, 129, 133, 1)',
+    'rgba(72, 134, 107, 1)',
+    'rgba(73, 162, 197, 1)',
+    'rgba(85, 67, 119, 1)',
+    'rgba(86, 94, 67, 1)',
+    'rgba(86, 178, 230, 1)',
+    'rgba(88, 66, 58, 1)',
+    'rgba(106, 205, 189, 1)',
+    'rgba(124, 120, 201, 1)',
+    'rgba(126, 196, 116, 1)',
+    'rgba(127, 217, 236, 1)',
+    'rgba(128, 138, 155, 1)',
+    'rgba(134, 134, 136, 1)',
+    'rgba(147, 180, 138, 1)',
+    'rgba(152, 62, 50, 1)',
+    'rgba(154, 64, 96, 1)',
+    'rgba(154, 76, 56, 1)',
+    'rgba(165, 174, 192, 1)',
+    'rgba(176, 98, 69, 1)',
+    'rgba(179, 199, 231, 1)',
+    'rgba(181, 152, 161, 1)',
+    'rgba(197, 198, 200, 1)',
+    'rgba(198, 65, 78, 1)',
+    'rgba(200, 75, 141, 1)',
+    'rgba(202, 70, 73, 1)',
+    'rgba(208, 125, 144, 1)',
+    'rgba(212, 111, 164, 1)',
+    'rgba(221, 113, 60, 1)',
+    'rgba(223, 183, 166, 1)',
+    'rgba(224, 158, 138, 1)',
+    'rgba(225, 189, 115, 1)',
+    'rgba(226, 179, 151, 1)',
+    'rgba(228, 82, 67, 1)',
+    'rgba(229, 93, 56, 1)',
+    'rgba(230, 138, 60, 1)',
+    'rgba(231, 213, 93, 1)',
+    'rgba(233, 215, 176, 1)',
+    'rgba(237, 202, 161, 1)',
+    'rgba(241, 168, 66, 1)'
+];
+
+const dim_colors = ['rgba(26, 27, 32, 0.15)',
+    'rgba(42, 61, 58, 0.15)',
+    'rgba(44, 59, 87, 0.15)',
+    'rgba(57, 62, 70, 0.15)',
+    'rgba(57, 87, 162, 0.15)',
+    'rgba(59, 51, 47, 0.15)',
+    'rgba(62, 120, 106, 0.15)',
+    'rgba(66, 62, 106, 0.15)',
+    'rgba(67, 135, 211, 0.15)',
+    'rgba(72, 129, 133, 0.15)',
+    'rgba(72, 134, 107, 0.15)',
+    'rgba(73, 162, 197, 0.15)',
+    'rgba(85, 67, 119, 0.15)',
+    'rgba(86, 94, 67, 0.15)',
+    'rgba(86, 178, 230, 0.15)',
+    'rgba(88, 66, 58, 0.15)',
+    'rgba(106, 205, 189, 0.15)',
+    'rgba(124, 120, 201, 0.15)',
+    'rgba(126, 196, 116, 0.15)',
+    'rgba(127, 217, 236, 0.15)',
+    'rgba(128, 138, 155, 0.15)',
+    'rgba(134, 134, 136, 0.15)',
+    'rgba(147, 180, 138, 0.15)',
+    'rgba(152, 62, 50, 0.15)',
+    'rgba(154, 64, 96, 0.15)',
+    'rgba(154, 76, 56, 0.15)',
+    'rgba(165, 174, 192, 0.15)',
+    'rgba(176, 98, 69, 0.15)',
+    'rgba(179, 199, 231, 0.15)',
+    'rgba(181, 152, 161, 0.15)',
+    'rgba(197, 198, 200, 0.15)',
+    'rgba(198, 65, 78, 0.15)',
+    'rgba(200, 75, 141, 0.15)',
+    'rgba(202, 70, 73, 0.15)',
+    'rgba(208, 125, 144, 0.15)',
+    'rgba(212, 111, 164, 0.15)',
+    'rgba(221, 113, 60, 0.15)',
+    'rgba(223, 183, 166, 0.15)',
+    'rgba(224, 158, 138, 0.15)',
+    'rgba(225, 189, 115, 0.15)',
+    'rgba(226, 179, 151, 0.15)',
+    'rgba(228, 82, 67, 0.15)',
+    'rgba(229, 93, 56, 0.15)',
+    'rgba(230, 138, 60, 0.15)',
+    'rgba(231, 213, 93, 0.15)',
+    'rgba(233, 215, 176, 0.15)',
+    'rgba(237, 202, 161, 0.15)',
+    'rgba(241, 168, 66, 0.15)'
+];
 
 const extraRenderers = [new CSS2DRenderer()];
 const mat1 = new LineBasicMaterial({ color: "#c5c3c6" });
@@ -52,7 +154,6 @@ function compileGraph(obj) {
     return { meta, data: { nodes: nodes, links: links } };
 }
 
-
 function setNodeOpacity(cam, node, nodeEl) {
     let pos = new Vector3(0, 0, 0);
 
@@ -62,7 +163,7 @@ function setNodeOpacity(cam, node, nodeEl) {
 
     let dist = distanceVector(cam.position, pos);
 
-    let op = map(dist * (1.2), 500, 0, 0, 1);
+    let op = map(dist * (1.2), 600, 200, 0.1, 1);
     nodeEl.style.opacity = op;
 }
 
@@ -79,8 +180,17 @@ function setImageSize(cam, node, nodeEl) {
     return size;
 }
 
+const node_onHover = (cam, node) => {
+    const nodeEl = document.createElement('div');
+    nodeEl.innerText = "Test";
+    return new CSS2DObject(nodeEl);
+}
+
 const node_active = (cam, node) => {
     const nodeEl = document.createElement('div');
+    const P = document.createElement('P');
+    P.className = 'label-container';
+
     const p = document.createElement('p');
     p.textContent = node.name;
     if (node.url) {
@@ -89,6 +199,33 @@ const node_active = (cam, node) => {
     } else {
         p.className = 'label';
     }
+
+    if (node.group) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', '12px');
+        svg.setAttribute('height', '12px');
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '6px');
+        circle.setAttribute('cy', '6px');
+        circle.setAttribute('r', '4px');
+        circle.setAttribute('fill', colors[node.group]);
+        circle.setAttribute('stroke', 'rgba(255,255,255,0.5)');
+        circle.setAttribute('stroke-width', '4px');
+        circle.setAttribute('paint-order', 'stroke');
+        
+        svg.appendChild(circle);
+        P.appendChild(svg);
+    }
+
+    // if (node.group) {
+    //     p.style.color = '#ffffff';
+    //     p.style.backgroundColor = colors[node.group];
+    // }
+    // else {
+    //     p.style.color = '#ffffff';
+    //     p.style.backgroundColor = '#000000';
+    // }
 
     if (node.image) {
         const img = document.createElement('img');
@@ -106,13 +243,17 @@ const node_active = (cam, node) => {
         s.innerText = node.emoji;
         nodeEl.appendChild(s);
     }
-    nodeEl.appendChild(p);
+    P.appendChild(p);
+    nodeEl.appendChild(P);
     nodeEl.className = 'node-label active';
     return new CSS2DObject(nodeEl);
 }
 
 const node_default = (cam, node) => {
-    const nodeEl = document.createElement('div')
+    const nodeEl = document.createElement('div');
+
+    const P = document.createElement('p');
+    P.className = 'label-container';
     const p = document.createElement('p');
     p.textContent = node.name;
     if (node.url) {
@@ -121,6 +262,33 @@ const node_default = (cam, node) => {
     } else {
         p.className = 'label';
     }
+
+    if (node.group) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', '12px');
+        svg.setAttribute('height', '12px');
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '6px');
+        circle.setAttribute('cy', '6px');
+        circle.setAttribute('r', '4px');
+        circle.setAttribute('fill', colors[node.group]);
+        circle.setAttribute('stroke', 'rgba(255,255,255,0.5)');
+        circle.setAttribute('stroke-width', '4px');
+        circle.setAttribute('paint-order', 'stroke');
+        
+        svg.appendChild(circle);
+        P.appendChild(svg);
+    }
+
+    // if (node.group) {
+    //     p.style.color = colors[node.group];
+    //     p.style.backgroundColor = dim_colors[node.group];
+    // }
+    // else {
+    //     p.style.color = '#ffffff';
+    //     p.style.backgroundColor = '#ababab';
+    // }
 
     if (node.image) {
         const img = document.createElement('img');
@@ -140,8 +308,8 @@ const node_default = (cam, node) => {
     }
 
     nodeEl.className = 'node-label default';
-
-    nodeEl.appendChild(p);
+    P.appendChild(p);
+    nodeEl.appendChild(P);
     return new CSS2DObject(nodeEl);
 }
 
@@ -149,15 +317,44 @@ const node_dim = (cam, node) => {
     let nodeEl = document.createElement('div');
     nodeEl.className = 'node-label';
 
+    const P = document.createElement('p');
+    P.className = 'label-container';
+
     const p = document.createElement('p');
 
     p.textContent = node.name;
+
     if (node.url) {
         p.textContent += ' ↗️';
         p.className = 'label url';
     } else {
         p.className = 'label';
     }
+
+    if (node.group) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', '12px');
+        svg.setAttribute('height', '12px');
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '6px');
+        circle.setAttribute('cy', '6px');
+        circle.setAttribute('r', '4px');
+        circle.setAttribute('fill', colors[node.group]);
+        circle.setAttribute('stroke', 'rgba(255,255,255,0.5)');
+        circle.setAttribute('stroke-width', '4px');
+        circle.setAttribute('paint-order', 'stroke');
+        
+        svg.appendChild(circle);
+        P.appendChild(svg);
+    }
+    
+    // if (node.group) {
+    //     p.style.color = colors[node.group];
+    // }
+    // else {
+    //     p.style.color = '#16181a';
+    // }
 
     if (node.image) {
         const img = document.createElement('img');
@@ -176,12 +373,21 @@ const node_dim = (cam, node) => {
         nodeEl.appendChild(s);
     }
 
-    nodeEl.appendChild(p);
+    P.appendChild(p);
+    nodeEl.appendChild(P);
 
     setNodeOpacity(cam, node, nodeEl);
     return new CSS2DObject(nodeEl);
 }
 
+function Modal(info) {
+    return (
+        <div className="modal">
+            <h1>Hello, world</h1>
+            <p>{info}</p>
+        </div>
+    );
+}
 
 class Graph extends React.Component {
     constructor(props) {
@@ -204,11 +410,14 @@ class Graph extends React.Component {
         this.resumeAnimation = this.resumeAnimation.bind(this);
         this.toggleAnimationCycle = this.toggleAnimationCycle.bind(this);
         this.chargeForceChanged = this.chargeForceChanged.bind(this);
+        this.toggleAutoOrbit = this.toggleAutoOrbit.bind(this);
+
         this.state = {
             count: 0,
-            fogValue: 0.003,
+            fogValue: 0.001,
             animationCycle: true,
-            chargeForce: 120
+            chargeForce: 120,
+            autoOrbit: false
         };
 
     }
@@ -261,7 +470,10 @@ class Graph extends React.Component {
     }
 
     onNodeRightClick(node) {
-        if (node.url) {
+        if (node.info) {
+            // this.updateModal(node.info);
+        }
+        else if (node.url) {
             window.open(node.url, "_blank")
         }
     }
@@ -270,7 +482,6 @@ class Graph extends React.Component {
         let Graph = this.ref.current;
         Graph.scene().fog = new FogExp2(0xffffff, this.state.fogValue);
         Graph.controls().addEventListener('change', Graph.refresh);
-
     }
 
     componentWillUnmount() {
@@ -326,6 +537,12 @@ class Graph extends React.Component {
         }
     }
 
+    toggleAutoOrbit(e) {
+        if (this.ref) {
+            this.setState({ autoOrbit: !this.state.autoOrbit });
+        }
+    }
+
     chargeForceChanged(e) {
         this.setState({ chargeForce: e.target.value });
         this.ref.current.d3Force("charge", -1 * this.state.chargeForce);
@@ -350,11 +567,15 @@ class Graph extends React.Component {
                         </div>
                         <div className="control">
                             <p>Animation Cycle is currrently {this.state.animationCycle ? "active. You may pause to cool down memory usage." : "paused. You can resume to interact with graph."} </p>
-                            <div class="button-group">
+                            <div className="button-group">
                                 <a className={this.state.animationCycle ? "button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause Animation Cycle" : "Resume Animation Cycle"}</a>
                             </div>
                         </div>
-
+                        {/* <div className="control">
+                            <div className ="button-group">
+                                <a className={this.state.autoOrbit ? "button secondary" : "button primary"} onClick={this.toggleAutoOrbit}>{this.state.autoOrbit ? "Pause Auto Orbit" : "Resume Auto Orbit"}</a>
+                            </div>
+                        </div> */}
                     </div>
                 </div>
                 <ForceGraph3D
@@ -373,12 +594,14 @@ class Graph extends React.Component {
                     linkResolution={4}
                     nodeOpacity={0}
                     linkMaterial={this.linkMaterial}
-                    linkCurvature={0}
+                    linkCurvature={0.0}
                     nodeThreeObject={this.nodeObject}
                     nodeThreeObjectExtend={true}
                     onNodeClick={this.onNodeClick}
                     onLinkClick={this.onLinkClick}
+                    onNodeHover={this.onNodeHover}
                     onNodeRightClick={this.onNodeRightClick}
+                    onBackgroundClick={this.resetHighlights}
                 />
             </div>
         );
@@ -407,7 +630,11 @@ class Details extends React.Component {
         return (
 
             <div className="details">
-                <h1>{this.props.meta.name}<span>{this.props.meta.lang}</span></h1>
+                <h1>{this.props.meta.name}
+                    {this.props.meta.tags.map((value, index) => {
+                        return <span key={index}>{value}</span>
+                    })}
+                </h1>
                 <p>{this.props.meta.description}</p>
 
                 <h6>Source</h6>
