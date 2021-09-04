@@ -411,14 +411,15 @@ class Graph extends React.Component {
         this.toggleAnimationCycle = this.toggleAnimationCycle.bind(this);
         this.chargeForceChanged = this.chargeForceChanged.bind(this);
         this.toggleAutoOrbit = this.toggleAutoOrbit.bind(this);
-
+        this.toggleSidebar = this.toggleSidebar.bind(this);
         this.state = {
             count: 0,
             fogValue: 0.001,
             animationCycle: true,
             chargeForce: 120,
             autoOrbit: false,
-            fixAfterDrag: false
+            fixAfterDrag: false,
+            sidebar: true
         };
 
     }
@@ -474,7 +475,7 @@ class Graph extends React.Component {
             // this.updateModal(node.info);
         }
         else if (node.url) {
-            window.open(node.url, "_blank")
+            window.open(node.url, "_blank");
         }
     }
 
@@ -549,6 +550,15 @@ class Graph extends React.Component {
         this.ref.current.d3ReheatSimulation();
     }
 
+    toggleSidebar(e) {
+        this.setState({ 'sidebar': !this.state.sidebar });
+        if (this.state.sidebar) {
+            document.getElementById("details").style.display = "flex";
+        } else {
+            document.getElementById("details").style.display = "none";
+        }
+    }
+
     render() {
 
         return (
@@ -568,13 +578,17 @@ class Graph extends React.Component {
                         <div className="control">
                             <p>Animation Cycle is currrently {this.state.animationCycle ? "active. You may pause to cool down memory usage." : "paused. You can resume to interact with graph."} </p>
                             <div className="button-group">
-                                <a className={this.state.animationCycle ? "button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause Animation Cycle" : "Resume Animation Cycle"}</a>
+                                <a className={this.state.animationCycle ? "button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause cycle" : "Resume cycle"}</a>
                             </div>
                         </div>
                         <div className="control-radio">
-                                <input type="checkbox" id="fixAfterDrag" name="fixAfterDrag" value={this.state.fixAfterDrag} onClick={e => { this.setState({ 'fixAfterDrag': !this.state.fixAfterDrag }) }} />
-                                {/* <a className={this.state.autoOrbit?"button secondary": "button primary"} onClick={this.toggleAutoOrbit}>{this.state.autoOrbit?"Pause Auto Orbit": "Resume Auto Orbit"}</a> */}
-                                <p>Fix nodes after drag?</p>
+                            <input type="checkbox" id="fixAfterDrag" name="fixAfterDrag" value={this.state.fixAfterDrag} onClick={e => { this.setState({ 'fixAfterDrag': !this.state.fixAfterDrag }) }} />
+                            {/* <a className={this.state.autoOrbit?"button secondary": "button primary"} onClick={this.toggleAutoOrbit}>{this.state.autoOrbit?"Pause Auto Orbit": "Resume Auto Orbit"}</a> */}
+                            <p>Fix nodes after drag?</p>
+                        </div>
+                        <div className="control-radio">
+                            <input type="checkbox" id="sidebar" name="sidebar" value={this.state.sidebar} onClick={this.toggleSidebar}/>
+                            <p>Show sidebar?</p>
                         </div>
                     </div>
                 </div>
@@ -636,7 +650,7 @@ class Details extends React.Component {
 
         return (
 
-            <div className="details">
+            <div id="details" className="details" style={{"display":"none"}}>
                 <h1>{this.props.meta.name}
                     {this.props.meta.tags.map((value, index) => {
                         return <span key={index}>{value}</span>

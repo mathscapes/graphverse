@@ -1,8 +1,8 @@
 {
     "meta": {
-        "name" : "HCD-DLI Cluster",
+        "name" : "HCD-DLI Cluster at Srishti",
         "tags"  : [ "en" ],
-        "description" : "Lorem ipsum",
+        "description" : "",
         "sourceLinks" : [ 
             { "title": "Empty", "url": "#" }
         ],
@@ -14,15 +14,16 @@
     },
     "data": {
         "nodes": [
+            { "id": "0", "name": "Srishti (M)", "url": "https://graphverse.mathscapes.xyz/graph/srishti-organogram" },
             { "id": "HCD&DLI", "name": "HCD & DLI Cluster" },
             { "id": "fac", "name": "Facilitators" },
-            { "id": "naveen", "name": "Dr.Naveen Bagalkot", "emoji": "😈" },
+            { "id": "naveen", "name": "Dr.Naveen Bagalkot", "emoji": "🥷🏻" },
             { "id": "venkat", "name": "Dr.Venkata Chilukuri", "emoji": "🕵🏽"},
             { "id": "subbu", "name": "Dr.Submramanya", "emoji": "👨🏽‍💼" },
             { "id": "vineeta", "name": "Vineeta Rath", "emoji": "🙍🏻‍♀️" },
-            { "id": "debjani", "name": "Debjani", "emoji": "🕵🏽‍♀️" },
+            { "id": "debjani", "name": "Debjani", "emoji": "🕵🏻‍♀️" },
             { "id": "shreya", "name": "Shreya", "emoji": "👩🏻‍💼" },
-            { "id": "paul", "name": "Paul Anthony", "emoji": "🧙🏼‍♂️" },
+            { "id": "paul", "name": "Paul Anthony", "emoji": "🧙🏼‍♂️🐈" },
             { "id": "kshama", "name": "Kshama Nagaraja", "emoji": "👩🏻‍🏫" },
             { "id": "sanjukta", "name": "Dr.Sanjukta", "emoji": "👩🏻‍💼" },
             { "id": "vinod", "name": "Vinod", "emoji": "🧑🏼‍🎨" },
@@ -97,6 +98,7 @@
             { "id": "fas", "name": "Focussed Area Study" }
         ],
         "links": [
+            { "source": "0", "target": "HCD&DLI" },
             { "source": "HCD&DLI", "target": "fac" },
             { "source": "fac", "target": "naveen" },
             { "source": "fac", "target": "venkat" },

@@ -55,7 +55,7 @@
     },
     {
         "id": "hcd-dli-cluster",
-        "name": "HCD-DLI Cluster",
+        "name": "HCD-DLI Cluster at Srishti",
         "tags": ["en","temporary", "private"],
         "url": "./raw/hcd-dli-cluster.json"
     }
