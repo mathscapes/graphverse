@@ -163,7 +163,7 @@ function setNodeOpacity(cam, node, nodeEl) {
 
     let dist = distanceVector(cam.position, pos);
 
-    let op = map(dist * (1.2), 600, 200, 0.1, 1);
+    let op = map(dist * (1.2), 700, 300, 0, 1);
     nodeEl.style.opacity = op;
 }
 
@@ -410,14 +410,13 @@ class Graph extends React.Component {
         this.resumeAnimation = this.resumeAnimation.bind(this);
         this.toggleAnimationCycle = this.toggleAnimationCycle.bind(this);
         this.chargeForceChanged = this.chargeForceChanged.bind(this);
-        this.toggleAutoOrbit = this.toggleAutoOrbit.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.angle = 0;
         this.state = {
             count: 0,
             fogValue: 0.001,
             animationCycle: true,
             chargeForce: 120,
-            autoOrbit: false,
             fixAfterDrag: false,
             sidebar: true
         };
@@ -483,6 +482,7 @@ class Graph extends React.Component {
         let Graph = this.ref.current;
         Graph.scene().fog = new FogExp2(0xffffff, this.state.fogValue);
         Graph.controls().addEventListener('change', Graph.refresh);
+
     }
 
     componentWillUnmount() {
@@ -538,11 +538,6 @@ class Graph extends React.Component {
         }
     }
 
-    toggleAutoOrbit(e) {
-        if (this.ref) {
-            this.setState({ autoOrbit: !this.state.autoOrbit });
-        }
-    }
 
     chargeForceChanged(e) {
         this.setState({ chargeForce: e.target.value });
@@ -565,7 +560,7 @@ class Graph extends React.Component {
             <div className="graph" >
                 <div className="customize" >
                     <div className="title">
-                        <h6>More</h6>
+                        <h6>Control Panel</h6>
                     </div>
                     <div className="customize-controls">
                         {/* <div className="control">
@@ -587,8 +582,11 @@ class Graph extends React.Component {
                             <p>Fix nodes after drag?</p>
                         </div>
                         <div className="control-radio">
-                            <input type="checkbox" id="sidebar" name="sidebar" value={this.state.sidebar} onClick={this.toggleSidebar}/>
+                            <input type="checkbox" id="sidebar" name="sidebar" value={this.state.sidebar} onClick={this.toggleSidebar} />
                             <p>Show sidebar?</p>
+                        </div>
+                        <div className="control">
+                            <p>Left-click: Rotate, Mouse-wheel/Middle-click: Zoom, Right-click: Pan</p>
                         </div>
                     </div>
                 </div>
@@ -608,7 +606,7 @@ class Graph extends React.Component {
                     linkResolution={4}
                     nodeOpacity={0}
                     linkMaterial={this.linkMaterial}
-                    linkCurvature={0.0}
+                    linkCurvature={0.035}
                     nodeThreeObject={this.nodeObject}
                     nodeThreeObjectExtend={true}
                     onNodeClick={this.onNodeClick}
@@ -650,7 +648,7 @@ class Details extends React.Component {
 
         return (
 
-            <div id="details" className="details" style={{"display":"none"}}>
+            <div id="details" className="details" style={{ "display": "none" }}>
                 <h1>{this.props.meta.name}
                     {this.props.meta.tags.map((value, index) => {
                         return <span key={index}>{value}</span>
