@@ -21,7 +21,7 @@ import {useHistory} from 'react-router-dom';
 function App() {
     return (
         <div className="App">
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
                 <Nav />
                 <Switch>
                     <Route exact path="/" component={() => <Search items={GraphList} />} />
