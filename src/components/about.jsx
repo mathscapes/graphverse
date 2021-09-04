@@ -3,8 +3,8 @@ import React from "react";
 function About(props) {
     return (
         <div className="about">
-            {/* <h1>About Graphverse</h1> */}
-            {/* <h1 class="large"><b>Graphverse</b> —<br />
+            <h1>About Graphverse</h1>
+            <h1 class="large"><b>Graphverse</b> —<br />
                 A Public Project by <a href="https://mathscapes.xyz">Mathscapes</a>
             </h1>
             <h2>Graphverse is an open and free platform to archive complex systems as knowledge graphs
@@ -81,7 +81,7 @@ function About(props) {
                     Started in 2008 by Gaurav Singh, Mathscapes produces research and work in the area of algorithms with mathematics and visual arts. Mathscapes is shortened from Mathscapes Research (OPC) Pvt Ltd., which was incorporated under the Companies Act, 2013 (18 of 2013) in India.
                 </p>
                 <p>Contact: hello@mathscapes.xyz</p>
-            </div> */}
+            </div>
         </div>
     );
 }

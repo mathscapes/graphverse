@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+
 function Nav(props) {
     return (
         <div className="Navigation">
@@ -15,7 +16,7 @@ function Nav(props) {
                         <li><Link to="/case-studies">Case Studies</Link></li>
                         <li><Link to="/about">About Graphverse</Link></li>
                         <li><Link to="/terms">Terms of use</Link></li>
-                        <li><Link className="dim" to="/contact">v0.3.0</Link></li>
+                        <li><Link className="dim" to="/contact">v0.4.0</Link></li>
                     </ul>
                 </div>
             </nav>

@@ -5,6 +5,7 @@ import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
 import { Helmet } from 'react-helmet';
+import {useHistory} from 'react-router-dom';
 
 // const head = `
 //     <meta charSet="utf-8" />

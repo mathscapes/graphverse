@@ -2,55 +2,61 @@
     {
         "id": "fields-in-mathematics",
         "name": "Fields in Mathematics",
-        "tags": ["en","case study"],
+        "tags": ["en","work in progress"],
         "url": "./raw/fields-in-mathematics.json"
     },
     {
         "id": "srishti-organogram",
         "name": "Srishti Organogram",
-        "tags": ["en","case study"],
+        "tags": ["en","work in progress"],
         "url": "./raw/srishti-organogram.json"
     },
     {
         "id": "software-design-patterns",
         "name": "Software Design Patterns",
-        "tags": ["en","case study"],
+        "tags": ["en","work in progress"],
         "url": "./raw/software-design-patterns.json"
     },
     {
         "id": "design-studios-in-india",
         "name": "Design Studios in India",
-        "tags": ["en","case study"],
+        "tags": ["en","work in progress"],
         "url": "./raw/design-studios-in-india.json"
     },
     {
         "id": "spiderman-in-film",
         "name": "Spiderman in film",
-        "tags": ["en","case study"],
+        "tags": ["en","work in progress"],
         "url": "./raw/spiderman-in-film.json"
     },
     {
         "id": "hindi-grammar",
         "name": "हिंदी व्याकरण",
-        "tags": ["hi","case study"],
+        "tags": ["hi","work in progress"],
         "url": "./raw/hindi-grammar.json"
     },
     {
         "id": "namma-metro-rail-system-bengaluru-stations",
         "name": "Namma Metro Rail System, Bengaluru - Stations",
-        "tags": ["en","case study"],
+        "tags": ["en","work in progress"],
         "url": "./raw/namma-metro-rail-system-bengaluru-stations.json"
     },
     {
         "id": "graphverse-group-coloring",
         "name": "Graphverse Group Coloring",
-        "tags": ["en","case study"],
+        "tags": ["en","Testing"],
         "url": "./raw/graphverse-group-coloring.json"
     },
     {
         "id": "maths-lab-srishti-2021",
         "name": "Maths Lab at Srishti (2021)",
-        "tags": ["en","case study"],
+        "tags": ["en"],
         "url": "./raw/maths-lab-srishti-2021.json"
+    },
+    {
+        "id": "hcd-dli-cluster",
+        "name": "HCD-DLI Cluster",
+        "tags": ["en","temporary", "private"],
+        "url": "./raw/hcd-dli-cluster.json"
     }
 ]

@@ -213,7 +213,7 @@ const node_active = (cam, node) => {
         circle.setAttribute('stroke', 'rgba(255,255,255,0.5)');
         circle.setAttribute('stroke-width', '4px');
         circle.setAttribute('paint-order', 'stroke');
-        
+
         svg.appendChild(circle);
         P.appendChild(svg);
     }
@@ -276,7 +276,7 @@ const node_default = (cam, node) => {
         circle.setAttribute('stroke', 'rgba(255,255,255,0.5)');
         circle.setAttribute('stroke-width', '4px');
         circle.setAttribute('paint-order', 'stroke');
-        
+
         svg.appendChild(circle);
         P.appendChild(svg);
     }
@@ -344,11 +344,11 @@ const node_dim = (cam, node) => {
         circle.setAttribute('stroke', 'rgba(255,255,255,0.5)');
         circle.setAttribute('stroke-width', '4px');
         circle.setAttribute('paint-order', 'stroke');
-        
+
         svg.appendChild(circle);
         P.appendChild(svg);
     }
-    
+
     // if (node.group) {
     //     p.style.color = colors[node.group];
     // }
@@ -417,7 +417,8 @@ class Graph extends React.Component {
             fogValue: 0.001,
             animationCycle: true,
             chargeForce: 120,
-            autoOrbit: false
+            autoOrbit: false,
+            fixAfterDrag: false
         };
 
     }
@@ -452,7 +453,6 @@ class Graph extends React.Component {
         }
 
         this.hoverNode = node || null;
-
         this.setState({ count: this.state.count + 1 });
     }
 
@@ -571,11 +571,11 @@ class Graph extends React.Component {
                                 <a className={this.state.animationCycle ? "button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause Animation Cycle" : "Resume Animation Cycle"}</a>
                             </div>
                         </div>
-                        {/* <div className="control">
-                            <div className ="button-group">
-                                <a className={this.state.autoOrbit ? "button secondary" : "button primary"} onClick={this.toggleAutoOrbit}>{this.state.autoOrbit ? "Pause Auto Orbit" : "Resume Auto Orbit"}</a>
-                            </div>
-                        </div> */}
+                        <div className="control-radio">
+                                <input type="checkbox" id="fixAfterDrag" name="fixAfterDrag" value={this.state.fixAfterDrag} onClick={e => { this.setState({ 'fixAfterDrag': !this.state.fixAfterDrag }) }} />
+                                {/* <a className={this.state.autoOrbit?"button secondary": "button primary"} onClick={this.toggleAutoOrbit}>{this.state.autoOrbit?"Pause Auto Orbit": "Resume Auto Orbit"}</a> */}
+                                <p>Fix nodes after drag?</p>
+                        </div>
                     </div>
                 </div>
                 <ForceGraph3D
@@ -602,6 +602,13 @@ class Graph extends React.Component {
                     onNodeHover={this.onNodeHover}
                     onNodeRightClick={this.onNodeRightClick}
                     onBackgroundClick={this.resetHighlights}
+                    onNodeDragEnd={node => {
+                        if (this.state.fixAfterDrag) {
+                            node.fx = node.x;
+                            node.fy = node.y;
+                            node.fz = node.z;
+                        }
+                    }}
                 />
             </div>
         );

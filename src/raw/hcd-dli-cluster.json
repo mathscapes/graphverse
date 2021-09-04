@@ -1,0 +1,182 @@
+{
+    "meta": {
+        "name" : "HCD-DLI Cluster",
+        "tags"  : [ "en" ],
+        "description" : "Lorem ipsum",
+        "sourceLinks" : [ 
+            { "title": "Empty", "url": "#" }
+        ],
+        "contributedBy": [
+            "0xf17"
+        ],
+        "dataSource": "#",
+        "editLink": "#"
+    },
+    "data": {
+        "nodes": [
+            { "id": "HCD&DLI", "name": "HCD & DLI Cluster" },
+            { "id": "fac", "name": "Facilitators" },
+            { "id": "naveen", "name": "Dr.Naveen Bagalkot", "emoji": "😈" },
+            { "id": "venkat", "name": "Dr.Venkata Chilukuri", "emoji": "🕵🏽"},
+            { "id": "subbu", "name": "Dr.Submramanya", "emoji": "👨🏽‍💼" },
+            { "id": "vineeta", "name": "Vineeta Rath", "emoji": "🙍🏻‍♀️" },
+            { "id": "debjani", "name": "Debjani", "emoji": "🕵🏽‍♀️" },
+            { "id": "shreya", "name": "Shreya", "emoji": "👩🏻‍💼" },
+            { "id": "paul", "name": "Paul Anthony", "emoji": "🧙🏼‍♂️" },
+            { "id": "kshama", "name": "Kshama Nagaraja", "emoji": "👩🏻‍🏫" },
+            { "id": "sanjukta", "name": "Dr.Sanjukta", "emoji": "👩🏻‍💼" },
+            { "id": "vinod", "name": "Vinod", "emoji": "🧑🏼‍🎨" },
+
+            { "id": "UG", "name": "UG" },
+            { "id": "BDes", "name": "BDes HCD" },
+            { "id": "BVoc", "name": "BVoc UIIE" },
+            { "id": "PG", "name": "PG" },
+            { "id": "MDesHCD", "name": "MDes HCD" },
+            { "id": "MDesDLI", "name": "MDes DLI" },
+            { "id": "MAEX", "name": "MA EX" },
+            { "id": "C", "name": "Capabilities" },
+            { "id": "C1", "name": "See and Connect" },
+            { "id": "C2", "name": "Imagine" },
+            { "id": "C3", "name": "Discern and Align" },
+            { "id": "C4", "name": "Speculate" },
+            { "id": "C5", "name": "Make" },
+
+            { "id": "2", "name": "Year 2 and 3" },
+            { "id": "odd", "name": "Odd Semester" },
+            { "id": "cycle1", "name": "Cycle 1" },
+            { "id": "orient", "name": "Human-Tech Orientation", "emoji": "🧞‍♀️" },
+            { "id": "re", "name": "Human-Tech Reorientation", "emoji": "🎛" },
+            { "id": "dis", "name": "Human-Tech Disorientation", "emoji": "😵‍💫" },
+            { "id": "workshop", "name": "Workshop" },
+            { "id": "emb", "name": "Embodied Interactions*", "emoji": "👌" },
+            { "id": "uxdp", "name": "UX Development in Practice", "emoji": "💁🏾" },
+            { "id": "math", "name": "TBA", "emoji": "👾" },
+            { "id": "cycle2", "name": "Cycle 2" },
+            { "id": "emb2", "name": "Embodied Experiences", "emoji": "🧘🏽‍♀️" },
+            { "id": "data", "name": "Data Beings", "emoji": "🤖" },
+
+            { "id": "4", "name": "Year 4" },
+            { "id": "odd2", "name": "7th Sem Project" },
+            { "id": "even2", "name": "8th Sem Project" },
+
+            { "id": "PG.1", "name": "/" },
+            { "id": "PG.2", "name": "/" },
+            { "id": "PG.2.cycle1", "name": "Cycle 1" },
+            { "id": "PG.2.workshop", "name": "Workshop" },
+            { "id": "PG.2.cycle2", "name": "Cycle 2" },
+
+            { "id": "play", "name": "Playing with Research" },
+            { "id": "kirana", "name": "Kirana Cultures" },
+            { "id": "care", "name": "Care Matters and Justice Dreams" },
+
+            { "id": "W1", "name": "TBA" },
+            { "id": "W2", "name": "TBA" },
+            { "id": "W3", "name": "Design Thinking with AI" },
+
+            { "id": "BVoc.S1", "name": "Semester 1" },
+            { "id": "BVoc.S2", "name": "Semester 2" },
+            { "id": "BVoc.S3", "name": "Semester 3" },
+            { "id": "BVoc.S4", "name": "Semester 4" },
+            { "id": "BVoc.S5", "name": "Semester 5" },
+            { "id": "BVoc.S6", "name": "Semester 6" },
+
+            { "id": "vis", "name": "Basics of Visual Design" },
+            { "id": "ixd", "name": "Basics of IxD" },
+            { "id": "proto-ixd", "name": "Prototyping Interactions" },
+            { "id": "project-1", "name": "Project 1" },
+            { "id": "portfolio-1", "name": "Portfolio 1" },
+
+            { "id": "test-ixd", "name": "Testing Interactions" },
+            { "id": "programming", "name": "Programming for Interactions" },
+            { "id": "datasets", "name": "Working with Datasets" },
+            { "id": "datavis", "name": "Data and Visualisation" },
+            { "id": "project-3", "name": "Project 3" },
+            { "id": "portfolio-3", "name": "Portfolio 3" },
+
+            { "id": "linkages", "name": "Linkages - Mentor Lab" },
+            { "id": "fas", "name": "Focussed Area Study" }
+        ],
+        "links": [
+            { "source": "HCD&DLI", "target": "fac" },
+            { "source": "fac", "target": "naveen" },
+            { "source": "fac", "target": "venkat" },
+            { "source": "fac", "target": "subbu" },
+            { "source": "fac", "target": "vineeta" },
+            { "source": "fac", "target": "kshama" },
+            { "source": "fac", "target": "debjani" },
+            { "source": "fac", "target": "paul" },
+            { "source": "fac", "target": "sanjukta" },
+            { "source": "fac", "target": "vinod" },
+            { "source": "fac", "target": "shreya" },
+
+            { "source": "HCD&DLI", "target": "UG" },
+            { "source": "UG", "target": "BDes" },
+            { "source": "UG", "target": "BVoc" },
+            { "source": "HCD&DLI", "target": "PG" },
+
+
+            { "source": "HCD&DLI", "target": "C" },
+            { "source": "C", "target": "C1" },
+            { "source": "C", "target": "C2" },
+            { "source": "C", "target": "C3" },
+            { "source": "C", "target": "C4" },
+            { "source": "C", "target": "C5" },
+
+            { "source": "BDes", "target": "2" },
+            { "source": "2", "target": "odd" },
+            { "source": "odd", "target": "cycle1" },
+            { "source": "cycle1", "target": "orient" },
+            { "source": "cycle1", "target": "re" },
+            { "source": "cycle1", "target": "dis" },
+            { "source": "odd", "target": "workshop" },
+            { "source": "workshop", "target": "emb" },
+            { "source": "workshop", "target": "uxdp" },
+            { "source": "workshop", "target": "math" },
+            { "source": "odd", "target": "cycle2" },
+            { "source": "cycle2", "target": "emb2" },
+            { "source": "cycle2", "target": "data" },
+
+            { "source": "BDes", "target": "4" },
+            { "source": "4", "target": "odd2" },
+            { "source": "4", "target": "even2" },
+
+            { "source": "PG", "target": "PG.1" },
+            { "source": "PG.1", "target": "MDesHCD" },
+            { "source": "PG.1", "target": "MDesDLI" },
+            { "source": "PG.1", "target": "MAEX" },
+            { "source": "PG", "target": "PG.2" },
+            { "source": "PG.2", "target": "PG.2.cycle1" },
+            { "source": "PG.2.cycle1", "target": "play" },
+            { "source": "PG.2.cycle1", "target": "care" },
+            { "source": "PG.2.cycle1", "target": "kirana" },
+            { "source": "PG.2", "target": "PG.2.workshop" },
+            { "source": "PG.2.workshop", "target": "W1" },
+            { "source": "PG.2.workshop", "target": "W2" },
+            { "source": "PG.2.workshop", "target": "W3" },
+            { "source": "PG.2", "target": "PG.2.cycle2" },
+
+            { "source": "BVoc", "target": "BVoc.S1" },
+            { "source": "BVoc", "target": "BVoc.S2" },
+            { "source": "BVoc", "target": "BVoc.S3" },
+            { "source": "BVoc", "target": "BVoc.S4" },
+            { "source": "BVoc", "target": "BVoc.S5" },
+            { "source": "BVoc", "target": "BVoc.S6" },
+
+            { "source": "BVoc.S1", "target": "vis" },
+            { "source": "BVoc.S1", "target": "ixd" },
+            { "source": "BVoc.S1", "target": "proto-ixd" },
+            { "source": "BVoc.S1", "target": "project-1" },
+            { "source": "BVoc.S1", "target": "portfolio-1" },
+
+            { "source": "BVoc.S3", "target": "test-ixd" },
+            { "source": "BVoc.S3", "target": "programming" },
+            { "source": "BVoc.S3", "target": "datasets" },
+            { "source": "BVoc.S3", "target": "datavis" },
+            { "source": "BVoc.S3", "target": "project-3" },
+            { "source": "BVoc.S3", "target": "portfolio-3" },
+
+            { "source": "BVoc.S5", "target": "linkages" },
+            { "source": "BVoc.S5", "target": "fas" }
+        ]
+    }
+}
