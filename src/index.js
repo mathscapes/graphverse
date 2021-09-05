@@ -4,19 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, Footer, Home, About, Search, Graph } from "./components";
 import "./style.scss";
 import GraphList from './graphlist.json';
-import { Helmet } from 'react-helmet';
 import {useHistory} from 'react-router-dom';
-
-// const head = `
-//     <meta charSet="utf-8" />
-//     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX826LQMSL"></script>
-//     <script>
-//         window.dataLayer = window.dataLayer || [];
-//         function gtag(){ dataLayer.push(arguments); }
-//         gtag('js', new Date());
-//         gtag('config', 'G-QX826LQMSL');
-//     </script>
-// `;
 
 function App() {
     return (

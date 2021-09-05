@@ -42,6 +42,8 @@
             { "id": "C4", "name": "Speculate" },
             { "id": "C5", "name": "Make" },
 
+            { "id": "1", "name": "Year 1" },
+            { "id": "foundation", "name": "Foundation" },
             { "id": "2", "name": "Year 2 and 3" },
             { "id": "odd", "name": "Odd Semester" },
             { "id": "cycle1", "name": "Cycle 1" },
@@ -124,6 +126,8 @@
             { "source": "C", "target": "C4" },
             { "source": "C", "target": "C5" },
 
+            { "source": "BDes", "target": "1" },
+            { "source": "1", "target": "foundation" },
             { "source": "BDes", "target": "2" },
             { "source": "2", "target": "odd" },
             { "source": "odd", "target": "cycle1" },

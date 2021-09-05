@@ -5,11 +5,12 @@ import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRe
 import { Vector3, LineBasicMaterial, AxesHelper, MeshBasicMaterial, MeshLambertMaterial, FogExp2 } from 'three';
 import * as THREE from 'three';
 import { useParams, withRouter } from "react-router-dom";
-import pic from "../img/image.png";
-import Twemoji from 'react-twemoji';
-
 // const { useMemo, useState, useCallback, useRef } = React;
-
+import lt_move from "../img/lt-move.svg";
+import md_scroll from "../img/md-scroll.svg";
+import rt_move from "../img/rt-move.svg";
+import lt_click from "../img/lt-click.svg";
+import rt_click from "../img/rt-click.svg";
 const colors = [
     'rgba(26, 27, 32, 1)',
     'rgba(42, 61, 58, 1)',
@@ -438,20 +439,18 @@ class Graph extends React.Component {
     }
 
     onNodeClick(node) {
-        // console.log("entered onNodeClick");
-
         if ((!node && !this.highlightNodes.size) || (node && this.hoverNode === node)) return;
         this.resetHighlights();
 
         if (node) {
             this.addNodeToHighlighted(node);
+            this.setState({ count: this.state.count + 1 });
             for (let neighbor of node.neighbors) {
                 // console.log("Added " + neighbor + " to highlight");
                 this.addNodeToHighlighted(getNode(this.props.data.nodes, neighbor));
                 this.addLinkToHighlighted(getLink(this.props.data.links, node.id, neighbor));
             }
         }
-
         this.hoverNode = node || null;
         this.setState({ count: this.state.count + 1 });
     }
@@ -470,6 +469,7 @@ class Graph extends React.Component {
     }
 
     onNodeRightClick(node) {
+        this.ref.current.cameraPosition({}, { x: node.x, y: node.y, z: node.z }, 1000);
         if (node.info) {
             // this.updateModal(node.info);
         }
@@ -585,8 +585,13 @@ class Graph extends React.Component {
                             <input type="checkbox" id="sidebar" name="sidebar" value={this.state.sidebar} onClick={this.toggleSidebar} />
                             <p>Show sidebar?</p>
                         </div>
+
                         <div className="control">
-                            <p>Left-click: Rotate, Mouse-wheel/Middle-click: Zoom, Right-click: Pan</p>
+                            <p><img src={lt_move}/> Rotate view</p> 
+                            <p><img src={md_scroll}/> Zoom in/out</p>
+                            <p><img src={rt_move}/> Pan view</p>
+                            <p><img src={lt_click}/> Select node</p>
+                            <p><img src={rt_click}/> Center view to node</p>
                         </div>
                     </div>
                 </div>
@@ -673,6 +678,7 @@ class Details extends React.Component {
 }
 
 function GraphHook(props) {
+
     let { id } = useParams();
     let graph = null;
     let mp = require.resolve(`../raw/${id}.json`);

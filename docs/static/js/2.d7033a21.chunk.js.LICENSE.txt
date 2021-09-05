@@ -4,8 +4,6 @@ object-assign
 @license MIT
 */
 
-/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */
-
 /*! fromentries. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /** @license React v0.20.2
