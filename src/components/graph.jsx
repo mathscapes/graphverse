@@ -116,6 +116,8 @@ const extraRenderers = [new CSS2DRenderer()];
 const mat1 = new LineBasicMaterial({ color: "#c5c3c6" });
 const mat2 = new LineBasicMaterial({ color: "#969da5" });
 
+var LABEL_SIZE = 0.8;
+
 function map(value, x1, y1, x2, y2) {
     return (value - x1) * (y2 - x2) / (y1 - x1) + x2;
 }
@@ -164,8 +166,21 @@ function setNodeOpacity(cam, node, nodeEl) {
 
     let dist = distanceVector(cam.position, pos);
 
-    let op = map(dist * (1.2), 700, 300, 0, 1);
+    let op = map(dist, 500, 300, 0.1, 0.8);
     nodeEl.style.opacity = op;
+    nodeEl.style.zIndex = dist;
+}
+
+function suggestFontSizeFactor(cam, node) {
+    let pos = new Vector3(0, 0, 0);
+
+    if (node.x) {
+        pos = new Vector3(node.x, node.y, node.z);
+    }
+
+    let dist = distanceVector(cam.position, pos);
+
+    return map(dist, 600, 200, 0.8, 1);
 }
 
 function setImageSize(cam, node, nodeEl) {
@@ -190,10 +205,12 @@ const node_onHover = (cam, node) => {
 const node_active = (cam, node) => {
     const nodeEl = document.createElement('div');
     const P = document.createElement('P');
-    P.className = 'label-container';
+    P.className = 'label-container active';
 
     const p = document.createElement('p');
     p.textContent = node.name;
+    let s = LABEL_SIZE * suggestFontSizeFactor(cam, node);
+    p.style.fontSize = s + 'rem';
     if (node.url) {
         p.textContent += ' ↗️';
         p.className = 'label url';
@@ -219,15 +236,6 @@ const node_active = (cam, node) => {
         P.appendChild(svg);
     }
 
-    // if (node.group) {
-    //     p.style.color = '#ffffff';
-    //     p.style.backgroundColor = colors[node.group];
-    // }
-    // else {
-    //     p.style.color = '#ffffff';
-    //     p.style.backgroundColor = '#000000';
-    // }
-
     if (node.image) {
         const img = document.createElement('img');
         img.src = node.image;
@@ -236,10 +244,6 @@ const node_active = (cam, node) => {
         nodeEl.appendChild(img);
     }
     else if (node.emoji) {
-        // let t = React.createElement(Twemoji, {className:'twemoji', folder:'svg', ext:'.svg' }, node.emoji);
-
-        // let t = <Twemoji emoji={node.emoji} />;
-        // ReactDOM.render(t, nodeEl);
         let s = document.createElement('span');
         s.innerText = node.emoji;
         nodeEl.appendChild(s);
@@ -247,6 +251,7 @@ const node_active = (cam, node) => {
     P.appendChild(p);
     nodeEl.appendChild(P);
     nodeEl.className = 'node-label active';
+    setNodeOpacity(cam, node, nodeEl);
     return new CSS2DObject(nodeEl);
 }
 
@@ -257,6 +262,8 @@ const node_default = (cam, node) => {
     P.className = 'label-container';
     const p = document.createElement('p');
     p.textContent = node.name;
+    let s = LABEL_SIZE * suggestFontSizeFactor(cam, node);
+    p.style.fontSize = s + 'rem';
     if (node.url) {
         p.textContent += ' ↗️';
         p.className = 'label url';
@@ -282,15 +289,6 @@ const node_default = (cam, node) => {
         P.appendChild(svg);
     }
 
-    // if (node.group) {
-    //     p.style.color = colors[node.group];
-    //     p.style.backgroundColor = dim_colors[node.group];
-    // }
-    // else {
-    //     p.style.color = '#ffffff';
-    //     p.style.backgroundColor = '#ababab';
-    // }
-
     if (node.image) {
         const img = document.createElement('img');
         img.src = node.image;
@@ -299,10 +297,7 @@ const node_default = (cam, node) => {
         nodeEl.appendChild(img);
     }
     else if (node.emoji) {
-        // let t = React.createElement(Twemoji, {className:'twemoji', folder:'svg', ext:'.svg' }, node.emoji);
 
-        // let t = <Twemoji emoji={node.emoji} />;
-        // ReactDOM.render(t, nodeEl);
         let s = document.createElement('span');
         s.innerText = node.emoji;
         nodeEl.appendChild(s);
@@ -311,6 +306,7 @@ const node_default = (cam, node) => {
     nodeEl.className = 'node-label default';
     P.appendChild(p);
     nodeEl.appendChild(P);
+    setNodeOpacity(cam, node, nodeEl);
     return new CSS2DObject(nodeEl);
 }
 
@@ -324,6 +320,8 @@ const node_dim = (cam, node) => {
     const p = document.createElement('p');
 
     p.textContent = node.name;
+    let s = LABEL_SIZE * suggestFontSizeFactor(cam, node);
+    p.style.fontSize = s + 'rem';
 
     if (node.url) {
         p.textContent += ' ↗️';
@@ -350,13 +348,6 @@ const node_dim = (cam, node) => {
         P.appendChild(svg);
     }
 
-    // if (node.group) {
-    //     p.style.color = colors[node.group];
-    // }
-    // else {
-    //     p.style.color = '#16181a';
-    // }
-
     if (node.image) {
         const img = document.createElement('img');
         img.src = node.image;
@@ -365,10 +356,6 @@ const node_dim = (cam, node) => {
         nodeEl.appendChild(img);
     }
     else if (node.emoji) {
-        // let t = React.createElement(Twemoji, {className:'twemoji', folder:'svg', ext:'.svg' }, node.emoji);
-
-        // let t = <Twemoji emoji={node.emoji} />;
-        // ReactDOM.render(t, nodeEl);
         let s = document.createElement('span');
         s.innerText = node.emoji;
         nodeEl.appendChild(s);
@@ -412,16 +399,23 @@ class Graph extends React.Component {
         this.toggleAnimationCycle = this.toggleAnimationCycle.bind(this);
         this.chargeForceChanged = this.chargeForceChanged.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.fontSizeChanged = this.fontSizeChanged.bind(this);
         this.angle = 0;
         this.state = {
             count: 0,
-            fogValue: 0.001,
+            fogValue: 0.0005,
             animationCycle: true,
             chargeForce: 120,
             fixAfterDrag: false,
-            sidebar: true
+            sidebar: true,
+            labelSize: 0.8
         };
 
+    }
+
+    fontSizeChanged(e) {
+        this.setState({labelSize: e.target.value});
+        LABEL_SIZE = this.state.labelSize;
     }
 
     resetHighlights() {
@@ -482,7 +476,6 @@ class Graph extends React.Component {
         let Graph = this.ref.current;
         Graph.scene().fog = new FogExp2(0xffffff, this.state.fogValue);
         Graph.controls().addEventListener('change', Graph.refresh);
-
     }
 
     componentWillUnmount() {
@@ -563,10 +556,7 @@ class Graph extends React.Component {
                         <h6>Control Panel</h6>
                     </div>
                     <div className="customize-controls">
-                        {/* <div className="control">
-                            <p>Charge force: {this.state.chargeForce}</p>
-                            <input type="range" min="50" max="500" value={this.state.chargeForce} step="1" className="slider" onChange={this.chargeForceChanged} id="chargeForce" />
-                        </div> */}
+                        
                         <div className="control">
                             <p>Nodes: {this.props.data.nodes.length}, Links: {this.props.data.links.length}</p>
                         </div>
@@ -576,9 +566,12 @@ class Graph extends React.Component {
                                 <a className={this.state.animationCycle ? "button secondary" : "button primary"} onClick={this.toggleAnimationCycle}>{this.state.animationCycle ? "Pause cycle" : "Resume cycle"}</a>
                             </div>
                         </div>
+                        <div className="control">
+                            <p>Relative label size: {this.state.labelSize}</p>
+                            <input type="range" min="0.6" max="1.6" value={this.state.labelSize} step="0.05" className="slider" onChange={this.fontSizeChanged} id="labelSize" />
+                        </div>
                         <div className="control-radio">
                             <input type="checkbox" id="fixAfterDrag" name="fixAfterDrag" value={this.state.fixAfterDrag} onClick={e => { this.setState({ 'fixAfterDrag': !this.state.fixAfterDrag }) }} />
-                            {/* <a className={this.state.autoOrbit?"button secondary": "button primary"} onClick={this.toggleAutoOrbit}>{this.state.autoOrbit?"Pause Auto Orbit": "Resume Auto Orbit"}</a> */}
                             <p>Fix nodes after drag?</p>
                         </div>
                         <div className="control-radio">
@@ -591,7 +584,7 @@ class Graph extends React.Component {
                             <p><img src={md_scroll}/> Zoom in/out</p>
                             <p><img src={rt_move}/> Pan view</p>
                             <p><img src={lt_click}/> Select node</p>
-                            <p><img src={rt_click}/> Center view to node</p>
+                            <p><img src={rt_click}/> Lock camera to node</p>
                         </div>
                     </div>
                 </div>
@@ -606,7 +599,7 @@ class Graph extends React.Component {
                     showNavInfo={false}
                     linkWidth={0.25}
                     warmupTicks={100}
-                    nodeRelSize={5}
+                    nodeRelSize={10}
                     nodeResolution={2}
                     linkResolution={4}
                     nodeOpacity={0}

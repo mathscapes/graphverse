@@ -21,12 +21,13 @@
             { "id": "venkat", "name": "Dr.Venkata Chilukuri", "emoji": "🕵🏽"},
             { "id": "subbu", "name": "Dr.Submramanya", "emoji": "👨🏽‍💼" },
             { "id": "vineeta", "name": "Vineeta Rath", "emoji": "🙍🏻‍♀️" },
-            { "id": "debjani", "name": "Debjani", "emoji": "🕵🏻‍♀️" },
+            { "id": "debjani", "name": "Debjani", "emoji": "🐱🕵🏻‍♀️😼" },
             { "id": "shreya", "name": "Shreya", "emoji": "👩🏻‍💼" },
             { "id": "paul", "name": "Paul Anthony", "emoji": "🧙🏼‍♂️🐈" },
             { "id": "kshama", "name": "Kshama Nagaraja", "emoji": "👩🏻‍🏫" },
             { "id": "sanjukta", "name": "Dr.Sanjukta", "emoji": "👩🏻‍💼" },
             { "id": "vinod", "name": "Vinod", "emoji": "🧑🏼‍🎨" },
+            { "id": "kush", "name": "Dr.Kush Patel", "emoji": "🧔🏻‍♂️" },
 
             { "id": "UG", "name": "UG" },
             { "id": "BDes", "name": "BDes HCD" },
@@ -112,6 +113,7 @@
             { "source": "fac", "target": "sanjukta" },
             { "source": "fac", "target": "vinod" },
             { "source": "fac", "target": "shreya" },
+            { "source": "fac", "target": "kush" },
 
             { "source": "HCD&DLI", "target": "UG" },
             { "source": "UG", "target": "BDes" },

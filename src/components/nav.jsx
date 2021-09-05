@@ -16,7 +16,7 @@ function Nav(props) {
                         <li><Link to="/case-studies">Case Studies</Link></li>
                         <li><Link to="/about">About Graphverse</Link></li>
                         <li><Link to="/terms">Terms of use</Link></li>
-                        <li><Link className="dim" to="/contact">v0.9.0</Link></li>
+                        <li><Link className="dim" to="/contact">v0.10.0</Link></li>
                     </ul>
                 </div>
             </nav>

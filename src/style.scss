@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Chivo:wght@100;200;400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montaga&display=swap");
 
 $font-family: "Chivo", sans-serif;
 $font-size: 0.8rem;
@@ -29,7 +29,8 @@ body {
     font-size: $font-size;
 }
 
-h1,h2 {
+h1,
+h2 {
     letter-spacing: -0.5px;
 }
 
@@ -204,7 +205,7 @@ body {
     }
     .customize {
         opacity: 0.25;
-        transition: 0.3s all;
+        transition: 10s all;
         z-index: 1000;
         position: absolute;
         top: 3rem;
@@ -267,7 +268,7 @@ body {
         p {
             line-height: 1.4;
             font-size: $font-size;
-            font-family: 'Montaga', serif;
+            font-family: "Montaga", serif;
             color: $color-neutral-1;
         }
         ul {
@@ -322,7 +323,7 @@ h6 {
 }
 
 .node-label {
-    font-size: $font-size;
+    // font-size: $font-size;
     color: #16181a;
     text-align: center;
     max-width: 15vw;
@@ -332,7 +333,7 @@ h6 {
         flex-direction: row;
         column-gap: 0.5rem;
         align-items: center;
-        
+
         padding: 0.5em 0.6rem;
         // max-width: 10rem;
         overflow-wrap: normal;
@@ -342,10 +343,15 @@ h6 {
         background-color: rgba($color-neutral-5, 1);
 
         p {
-            margin:0;
+            margin: 0;
         }
     }
 
+    .label-container.active {
+        p {
+            // font-size: 1.2rem;
+        }
+    }
 
     // .label {
     //     padding: 0.4em 0.5rem;
@@ -369,9 +375,9 @@ h6 {
     /* transition: 0.1s; */
 
     span {
-        font-size: 3rem;
+        font-size: 2.4rem;
         filter: grayscale(1);
-        opacity: 0.5;
+        opacity: 0.25;
     }
 
     // transition: 0.1s opacity;
@@ -406,12 +412,10 @@ h6 {
 }
 
 .node-label.active {
-    .label-container{
+    .label-container {
         font-size: $font-size;
         color: #ffffff;
         background: $color-neutral-0;
-
-        
     }
     // .label {
     //     font-size: $font-size;
@@ -499,11 +503,10 @@ canvas {
         column-gap: 0.5rem;
     }
     padding: 0.25rem 0;
-    
 }
 
 .control-radio {
-    width:100%;
+    width: 100%;
     display: flex;
     align-items: center;
     align-self: flex-start;
@@ -568,7 +571,7 @@ a.button:hover {
 
     h1 {
         font-weight: 200;
-        color:$color-neutral-0;
+        color: $color-neutral-0;
     }
 
     h1.large {
@@ -588,7 +591,6 @@ a.button:hover {
         font-weight: 600;
         font-size: 3rem;
         line-height: 1.1;
-        
     }
 
     h3 {
@@ -603,7 +605,7 @@ a.button:hover {
     }
 
     p {
-        font-family: 'Montaga', serif;
+        font-family: "Montaga", serif;
         font-size: 1.2rem;
         line-height: 1.4;
         color: $color-neutral-1;
@@ -619,7 +621,7 @@ a.button:hover {
 
     ul {
         li {
-            font-family: 'Montaga', serif;
+            font-family: "Montaga", serif;
             font-size: 1.1rem;
         }
     }
