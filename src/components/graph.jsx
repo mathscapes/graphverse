@@ -117,6 +117,7 @@ const mat1 = new LineBasicMaterial({ color: "#c5c3c6" });
 const mat2 = new LineBasicMaterial({ color: "#969da5" });
 
 var LABEL_SIZE = 0.8;
+var SHOW_EMOJI = true;
 
 function map(value, x1, y1, x2, y2) {
     return (value - x1) * (y2 - x2) / (y1 - x1) + x2;
@@ -243,7 +244,7 @@ const node_active = (cam, node) => {
         img.style.height = `5rem`;
         nodeEl.appendChild(img);
     }
-    else if (node.emoji) {
+    else if (node.emoji && SHOW_EMOJI) {
         let s = document.createElement('span');
         s.innerText = node.emoji;
         nodeEl.appendChild(s);
@@ -296,7 +297,7 @@ const node_default = (cam, node) => {
         img.style.height = `5rem`;
         nodeEl.appendChild(img);
     }
-    else if (node.emoji) {
+    else if (node.emoji && SHOW_EMOJI) {
 
         let s = document.createElement('span');
         s.innerText = node.emoji;
@@ -322,6 +323,7 @@ const node_dim = (cam, node) => {
     p.textContent = node.name;
     let s = LABEL_SIZE * suggestFontSizeFactor(cam, node);
     p.style.fontSize = s + 'rem';
+    P.style.borderRadius = '5rem';
 
     if (node.url) {
         p.textContent += ' ↗️';
@@ -355,7 +357,7 @@ const node_dim = (cam, node) => {
         img.style.height = `5rem`;
         nodeEl.appendChild(img);
     }
-    else if (node.emoji) {
+    else if (node.emoji && SHOW_EMOJI) {
         let s = document.createElement('span');
         s.innerText = node.emoji;
         nodeEl.appendChild(s);
@@ -400,6 +402,7 @@ class Graph extends React.Component {
         this.chargeForceChanged = this.chargeForceChanged.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
         this.fontSizeChanged = this.fontSizeChanged.bind(this);
+        this.toggleEmoji = this.toggleEmoji.bind(this);
         this.angle = 0;
         this.state = {
             count: 0,
@@ -408,9 +411,17 @@ class Graph extends React.Component {
             chargeForce: 120,
             fixAfterDrag: false,
             sidebar: true,
-            labelSize: 0.8
+            labelSize: 0.8,
+            showEmoji: true
         };
 
+    }
+
+    toggleEmoji(e) {
+        SHOW_EMOJI = e.target.checked;
+        this.setState({
+            showEmoji: e.target.checked
+        });
     }
 
     fontSizeChanged(e) {
@@ -578,7 +589,10 @@ class Graph extends React.Component {
                             <input type="checkbox" id="sidebar" name="sidebar" value={this.state.sidebar} onClick={this.toggleSidebar} />
                             <p>Show sidebar?</p>
                         </div>
-
+                        <div className="control-radio">
+                            <input type="checkbox" id="sidebar" name="sidebar" checked={this.state.showEmoji} onClick={this.toggleEmoji} />
+                            <p>Show emojis? (experimental)</p>
+                        </div>
                         <div className="control">
                             <p><img src={lt_move}/> Rotate view</p> 
                             <p><img src={md_scroll}/> Zoom in/out</p>

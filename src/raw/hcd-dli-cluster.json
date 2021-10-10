@@ -113,7 +113,6 @@
             { "source": "fac", "target": "sanjukta" },
             { "source": "fac", "target": "vinod" },
             { "source": "fac", "target": "shreya" },
-            { "source": "fac", "target": "kush" },
 
             { "source": "HCD&DLI", "target": "UG" },
             { "source": "UG", "target": "BDes" },
